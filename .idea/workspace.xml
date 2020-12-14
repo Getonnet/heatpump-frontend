@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="592e1653-5177-4a1e-91aa-10e87f245651" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/styles/base/_vars.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_video-assistant.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/svg/brandLogosIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/brandSelect.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_brand-select.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assistant-person.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assistant-person.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
       <workItem from="1607684482582" duration="6037000" />
       <workItem from="1607850778703" duration="600000" />
       <workItem from="1607911383480" duration="646000" />
-      <workItem from="1607912452489" duration="5942000" />
+      <workItem from="1607912452489" duration="9855000" />
     </task>
     <servers />
   </component>
