@@ -1,7 +1,6 @@
 import Header from './components/header'
 import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
-import OptionsAndInfoBox from './components/optionsAndInfoBox'
 import {
   BrowserRouter as Router,
   Switch,
