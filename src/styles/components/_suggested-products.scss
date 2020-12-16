@@ -1,0 +1,34 @@
+.suggested-products {
+  margin-top: 100px;
+  max-height: 700px;
+  overflow: auto;
+  max-width: 540px;
+
+  // S T A R T style scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    //background: rgba(#19c3ff, 0.1);
+    //border-radius: 7px;
+    background-color: transparent;
+    display: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    //border-radius: 10px;
+    //background: #19c3ff;
+    //opacity: 0.4;
+    //border-radius: 7px;
+    //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+  // E N D style scrollbar
+
+  .card--product {
+    //margin-bottom: 20px;
+    margin: 20px auto 0 auto;
+  }
+}

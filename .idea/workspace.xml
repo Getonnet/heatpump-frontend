@@ -2,10 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="592e1653-5177-4a1e-91aa-10e87f245651" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/cart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/product-card.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/svg/cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/svg/minus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/svg/plus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/cart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/submit-data.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_btn.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_card.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_cart-component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_product-card.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_suggested-products.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/pages/_cart.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/assistant-person.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assistant-person.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/svg/menu-toggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/svg/menu-toggle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_video-assistant.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_video-assistant.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,17 +47,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reportify-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images/svg" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\walid\AppData\Roaming\npm\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\soly\heatpump-frontend\src\images\svg" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\soly\heatpump-frontend\src\images\svg" />
       <recent name="D:\soly\heatpump-frontend\src\images" />
     </key>
   </component>
@@ -51,7 +77,12 @@
       <workItem from="1607684482582" duration="6037000" />
       <workItem from="1607850778703" duration="600000" />
       <workItem from="1607911383480" duration="646000" />
-      <workItem from="1607912452489" duration="10794000" />
+      <workItem from="1607912452489" duration="15378000" />
+      <workItem from="1607953787784" duration="1527000" />
+      <workItem from="1608011944718" duration="1488000" />
+      <workItem from="1608022055370" duration="11391000" />
+      <workItem from="1608099686154" duration="1774000" />
+      <workItem from="1608114561073" duration="2473000" />
     </task>
     <servers />
   </component>

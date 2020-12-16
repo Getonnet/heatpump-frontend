@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
+import Cart from './pages/cart'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path="/cart">
+            <Cart />
+          </Route>
           <Route path="/brands">
             <BrandsSelect />
           </Route>

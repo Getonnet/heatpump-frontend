@@ -1,0 +1,106 @@
+.card--product {
+  z-index: 99;
+  max-width: 350px !important;
+
+  .product-image {
+    background: #19c3ff;
+    border-radius: 40px;
+    padding: 25px 30px 20px;
+
+    img,
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .product-category {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 10px;
+    color: #200e32;
+    opacity: 0.5;
+    margin-top: 25px;
+  }
+
+  .product-title {
+    margin-top: 10px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #200e32;
+    opacity: 0.8;
+  }
+
+  .product-description {
+    margin-top: 25px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.1em;
+    color: #200e32;
+    opacity: 0.8;
+  }
+
+  .product-cta {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    .btn {
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+  }
+
+  .product-quantity-selector {
+    border: 1px solid rgba(#19c3ff, 0.3);
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    .quantity-controls {
+      cursor: pointer;
+    }
+
+    input,
+    button {
+      height: 100%;
+    }
+    button {
+      background-color: transparent;
+      width: 35px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      display: none;
+    }
+    input[name='quantity'] {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      margin: -1px 0 0 0;
+      -moz-appearance: textfield;
+      border: 0;
+      border-top: 1px solid var(--primary);
+      outline: none;
+      max-width: 50px;
+      text-align: center;
+      padding: 0;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+}

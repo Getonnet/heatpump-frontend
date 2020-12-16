@@ -1,0 +1,22 @@
+.cart-icon {
+  position: relative;
+
+  .cart-num {
+    position: absolute;
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    right: -7px;
+    top: -7px;
+    background: #19c3ff;
+    box-shadow: 0px 14px 60px rgba(32, 14, 50, 0.2);
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+}
