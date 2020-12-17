@@ -21,7 +21,7 @@ export default function Header() {
           <div className='right'>
             <div className='header-cart'>
               <Link to={'/cart'}>
-                <Cart cartCount={1} />
+                <Cart cartCount={2} />
               </Link>
             </div>
             <div className='menu-toggle'>

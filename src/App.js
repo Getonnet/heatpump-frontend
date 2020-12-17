@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
-import Cart from './pages/cart'
+import CartPage from './pages/cartpage'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
 
         <Switch>
           <Route path="/cart">
-            <Cart />
+            <CartPage />
           </Route>
           <Route path="/brands">
             <BrandsSelect />

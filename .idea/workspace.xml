@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="592e1653-5177-4a1e-91aa-10e87f245651" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/cart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/product-card.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/minus.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/svg/plus.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/cart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/submit-data.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_btn.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_card.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_cart-component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_product-card.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/components/_suggested-products.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/pages/_cart.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/cart-line-item.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/svg/modalClose.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/components/_contact-modal.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assistant-person.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assistant-person.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/optionsAndInfoBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/svg/menu-toggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/svg/menu-toggle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_options-and-text-box.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/_video-assistant.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_video-assistant.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cartpage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_cart-component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_cart-component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/pages/_cart.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/pages/_cart.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +73,8 @@
       <workItem from="1608011944718" duration="1488000" />
       <workItem from="1608022055370" duration="11391000" />
       <workItem from="1608099686154" duration="1774000" />
-      <workItem from="1608114561073" duration="2473000" />
+      <workItem from="1608114561073" duration="12266000" />
+      <workItem from="1608180823931" duration="4327000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,12 @@
 @import 'components/btn';
 @import 'components/card';
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -14,6 +20,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
 }
 
 .App {

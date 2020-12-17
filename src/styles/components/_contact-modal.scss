@@ -1,0 +1,122 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 25px;
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #200e32;
+  }
+}
+
+.ReactModal__Content {
+  max-width: 885px;
+  width: 96% !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(25, 195, 255, 0.16) !important;
+  box-sizing: border-box;
+  box-shadow: 0px 14px 60px rgba(32, 14, 50, 0.04);
+  border-radius: 40px 0px 40px 40px !important;
+  padding: 37px !important;
+}
+
+.collect-data-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+
+  .left,
+  .right {
+    width: 48%;
+  }
+}
+
+.right {
+  height: 100%;
+}
+
+.left {
+  .form-field {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input {
+      padding-left: 75px;
+    }
+  }
+}
+
+.bottom {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 40px;
+
+  .btn {
+    padding: 20px 50px;
+  }
+}
+
+.form-field {
+  width: 100%;
+  padding: 5px;
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #200e32;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    background: rgba(#19c3ff, 0.06);
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    min-height: 56px;
+    //height: 56px;
+    padding: 14px 25px;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: rgba(#200e32, 0.8);
+  }
+
+  textarea {
+    resize: none;
+    //height: 100%;
+    border-radius: 20px;
+    height: 308px;
+  }
+}
+
+.input-icon {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    left: 0;
+  }
+}
