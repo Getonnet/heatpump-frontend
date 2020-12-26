@@ -40,8 +40,8 @@ export default function ProductCard() {
 
         <div className='right'>
           <div className='product-quantity-selector'>
-            <button className='quantity-controls' onClick={incrementQuantity}>
-              <PlusIcon />
+          <button className='quantity-controls' onClick={decrementQuantity}>
+              <MinusIcon />
             </button>
             <input
               type='number'
@@ -49,8 +49,8 @@ export default function ProductCard() {
               onChange={handleChange}
               value={quantity}
             />
-            <button className='quantity-controls' onClick={decrementQuantity}>
-              <MinusIcon />
+            <button className='quantity-controls' onClick={incrementQuantity}>
+              <PlusIcon />
             </button>
           </div>
         </div>
