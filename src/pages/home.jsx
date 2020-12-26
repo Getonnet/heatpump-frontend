@@ -9,11 +9,11 @@ export default function Homepage() {
       <div className='container'>
         {/*<OptionsAndInfoBox />*/}
         <div className='suggested-products'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard products={1} />
+          <ProductCard products={2} />
+          <ProductCard products={3} />
+          <ProductCard products={4} />
+          <ProductCard products={5} />
         </div>
       </div>
     </div>
