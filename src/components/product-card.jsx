@@ -4,7 +4,7 @@ import '../styles/components/_product-card.scss'
 import MinusIcon from '../images/svg/minus'
 import PlusIcon from '../images/svg/plus'
 
-export default function ProductCard({products}) {
+export default function ProductCard({products,  changes}) {
   const [quantity, setQuantity] = useState(0)
 
   const incrementQuantity = () => {
@@ -16,12 +16,6 @@ export default function ProductCard({products}) {
     else setQuantity(quantity)
   }
 
-  const handleChange = (e) => {
-    // do nothing
-    // setQuantity(quantity)
-    const id = e.currentTarget.dataset.id;
-    console.log(id);
-  }
 
   return (
     <div className='card card--product'>
@@ -37,7 +31,7 @@ export default function ProductCard({products}) {
       </div>
       <div className='product-cta'>
         <div className='left'>
-          <button onClick={handleChange} data-id={products} className='add-to-cart btn'>Add to cart</button>
+          <button onClick={changes} data-id={products} data-qty={quantity} className='add-to-cart btn'>Add to cart</button>
         </div>
 
         <div className='right'>
@@ -48,7 +42,7 @@ export default function ProductCard({products}) {
             <input
               type='number'
               name='quantity'
-              onChange={handleChange}
+              onChange={changes}
               value={quantity}
             />
             <button className='quantity-controls' onClick={incrementQuantity}>

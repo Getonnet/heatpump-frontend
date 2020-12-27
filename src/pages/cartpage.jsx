@@ -20,7 +20,7 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage() {
+export default function CartPage({items}) {
   // var subtitle
   const [modalIsOpen, setIsOpen] = React.useState(false)
   function openModal() {
@@ -51,11 +51,11 @@ export default function CartPage() {
             </thead>
 
             <tbody>
-              <CartLineItem />
-              <CartLineItem />
-              <CartLineItem />
-              <CartLineItem />
-              <CartLineItem />
+              {
+                items.map(x => (
+                  <CartLineItem product={x.id} quantity={x.qty} />
+                ))
+              }
               {/*cart discount*/}
               <tr>
                 <td />

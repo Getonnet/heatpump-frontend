@@ -5,7 +5,7 @@ import '../styles/components/_header.scss'
 import { Link } from 'react-router-dom'
 import Cart from './cart'
 
-export default function Header() {
+export default function Header({items}) {
   return (
     <header className='App-header'>
       <div className='container'>
@@ -21,7 +21,7 @@ export default function Header() {
           <div className='right'>
             <div className='header-cart'>
               <Link to={'/cart'}>
-                <Cart cartCount={2} />
+                <Cart cartCount={items} />
               </Link>
             </div>
             <div className='menu-toggle'>
