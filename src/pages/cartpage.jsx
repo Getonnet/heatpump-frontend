@@ -22,7 +22,10 @@ const customModalStyles = {
 
 export default function CartPage({items, total}) {
   // var subtitle
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const [data, setData] = useState({});
+
   function openModal() {
     setIsOpen(true)
   }
@@ -34,6 +37,12 @@ export default function CartPage({items, total}) {
 
   function closeModal() {
     setIsOpen(false)
+  }
+
+  const handleChange = ({currentTarget: input}) => {
+    const inputData = {...data};
+    inputData[input.name] = input.value;
+    setData(inputData);
   }
 
 
@@ -101,7 +110,7 @@ export default function CartPage({items, total}) {
                   <InputNameIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='name' placeholder='name' />
+                  <input type='text' id='name' name="name" onChange={handleChange} value={data.name || ''} placeholder='name' />
                 </div>
               </div>
             </div>
@@ -113,7 +122,7 @@ export default function CartPage({items, total}) {
                   <InputEmailIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='email' placeholder='email' />
+                  <input type='text' id='email' name="email" onChange={handleChange} value={data.email || ''} placeholder='email' />
                 </div>
               </div>
             </div>
@@ -124,7 +133,7 @@ export default function CartPage({items, total}) {
                   <InputPhoneIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='phone' placeholder='phone' />
+                  <input type='text' id='phone' name="phone" onChange={handleChange} value={data.phone || ''} placeholder='phone' />
                 </div>
               </div>
             </div>
@@ -133,7 +142,7 @@ export default function CartPage({items, total}) {
           <div className='right'>
             <div className='form-field'>
               <label htmlFor='message'>Message</label>
-              <textarea name='message' id='message' rows='100%' />
+              <textarea name='message' id='message' name="message" onChange={handleChange} value={data.message || ''} rows='100%' />
             </div>
           </div>
 
