@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/header'
 import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
@@ -13,6 +13,8 @@ function App() {
   const [item, setItem] = useState([])
   const [cart, setCart] = useState(0)
   const [amounts, setAmounts] = useState(0)
+  const [chats, setChats] = useState([])
+  // const [messages, setMessages] = useState([])
 
   const handleChange = (e) => {
     let productID = e.currentTarget.dataset.id;
@@ -54,11 +56,20 @@ function App() {
     setAmounts(total);
   }
 
+  useEffect( () => {
+    window.kindlyOptions = {
+      onMessage: (newMessage, chatLog) => {
+        setChats( [ ...chatLog ] );
+        // setMessages( [ ...messages,newMessage ] );
+      }
+    }
+});
+
   return (
     <div className='App' style={{ backgroundImage: `url('${bodyBgImage}')` }}>
       <Router>
         <Header items={cart} />
-
+        
         <Switch>
           <Route path="/cart">
             <CartPage items={item} total={amounts} />
@@ -70,7 +81,6 @@ function App() {
             <Homepage myChange={handleChange} />
           </Route>
         </Switch>
-
         <AssistantPerson />
       </Router>
     </div>

@@ -28,7 +28,6 @@ export default function Homepage({myChange}) {
               <ProductCard key={row.id} products={row.id} name={row.name} img={row.photo} price={row.price} descriptions={row.descriptions} category={row.category} changes={myChange} />
             ))
           }
-
         </div>
       </div>
     </div>
