@@ -9,49 +9,52 @@ import Homepage from './pages/home'
 import CartPage from './pages/cartpage'
 
 function App() {
-
   const [item, setItem] = useState([])
   const [cart, setCart] = useState(0)
   const [amounts, setAmounts] = useState(0)
 
-  const handleChange = (e) => {
-    let productID = e.currentTarget.dataset.id;
-    let quantity = e.currentTarget.dataset.qty;
-    let price = e.currentTarget.dataset.price;
-    let name = e.currentTarget.dataset.name;
-    let img = e.currentTarget.dataset.img;
+  const handleChange = e => {
+    let productID = e.currentTarget.dataset.id
+    let quantity = e.currentTarget.dataset.qty
+    let price = e.currentTarget.dataset.price
+    let name = e.currentTarget.dataset.name
+    let img = e.currentTarget.dataset.img
 
-    let currentItem = item;
-    
-    if(quantity != 0){
-       let i = currentItem.findIndex(x => x.id == productID);
+    let currentItem = item
 
-       if(i > -1){ // Update product quantity if exist
-        currentItem[i].qty = quantity;
-       }else{
-        currentItem.push({id:productID, qty:quantity, prices: price, names: name, photo: img});
-       }
-       setItem(currentItem);
-    }else{
-      let curItems = currentItem.filter((x, index, arr) => x.id !== productID);
-      setItem(curItems);
+    if (parseInt(quantity) !== 0) {
+      let i = currentItem.findIndex(x => x.id === productID)
+
+      if (i > -1) {
+        // Update product quantity if exist
+        currentItem[i].qty = quantity
+      } else {
+        currentItem.push({
+          id: productID,
+          qty: quantity,
+          prices: price,
+          names: name,
+          photo: img,
+        })
+      }
+      setItem(currentItem)
+    } else {
+      let curItems = currentItem.filter((x, index, arr) => x.id !== productID)
+      setItem(curItems)
     }
-    setCart(item.length);
+    setCart(item.length)
 
-    getTotal();
+    getTotal()
   }
 
   const getTotal = () => {
+    let amount = item.map(x => x.qty * x.prices)
 
-   let amount = item.map(x => (
-     x.qty * x.prices
-   ));
+    let total = amount.reduce((a, b) => {
+      return a + b
+    }, 0)
 
-   let total = amount.reduce((a,b) => {
-     return a+b;
-   }, 0);
-
-    setAmounts(total);
+    setAmounts(total)
   }
 
   return (
@@ -60,13 +63,13 @@ function App() {
         <Header items={cart} />
 
         <Switch>
-          <Route path="/cart">
+          <Route path='/cart'>
             <CartPage items={item} total={amounts} />
           </Route>
-          <Route path="/brands">
+          <Route path='/brands'>
             <BrandsSelect />
           </Route>
-          <Route path="/">
+          <Route path='/'>
             <Homepage myChange={handleChange} />
           </Route>
         </Switch>
