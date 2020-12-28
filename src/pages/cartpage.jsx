@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/pages/_cart.scss'
 import '../styles/components/_contact-modal.scss'
 import CartLineItem from '../components/cart-line-item'
@@ -20,9 +20,9 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage({items}) {
+export default function CartPage({items, total}) {
   // var subtitle
-  const [modalIsOpen, setIsOpen] = React.useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false)
   function openModal() {
     setIsOpen(true)
   }
@@ -35,6 +35,8 @@ export default function CartPage({items}) {
   function closeModal() {
     setIsOpen(false)
   }
+
+
 
   return (
     <div className='cart-page'>
@@ -52,27 +54,18 @@ export default function CartPage({items}) {
 
             <tbody>
               {
-                items.map(x => (
-                  <CartLineItem product={x.id} quantity={x.qty} />
+                items.map(row => (
+                  <CartLineItem key={row.id} product={row.id} name={row.names} price={row.prices} photo={row.photo} quantity={row.qty} />
                 ))
               }
-              {/*cart discount*/}
-              <tr>
-                <td />
-                <td>
-                  <span className='discount'>Discount</span>
-                </td>
-                <td />
-                <td>1000</td>
-              </tr>
               {/*cart total*/}
               <tr>
                 <td />
                 <td>
-                  <span className='discount'>Sum</span>
+                  <span className='discount'>Total</span>
                 </td>
                 <td />
-                <td>25000</td>
+                <td>{total} kr</td>
               </tr>
             </tbody>
           </table>

@@ -4,7 +4,7 @@ import '../styles/components/_product-card.scss'
 import MinusIcon from '../images/svg/minus'
 import PlusIcon from '../images/svg/plus'
 
-export default function ProductCard({products,  changes}) {
+export default function ProductCard({products, name, category, price, img, descriptions, changes}) {
   const [quantity, setQuantity] = useState(0)
 
   const incrementQuantity = () => {
@@ -20,18 +20,17 @@ export default function ProductCard({products,  changes}) {
   return (
     <div className='card card--product'>
       <div className='product-image'>
-        <HeatPumpImage />
+        <img src={img} alt="Product Image"/>
       </div>
 
-      <div className='product-category'>STYLISH</div>
-      <div className='product-title'>Daikin Stylish 105s</div>
+      <div className='product-category'>{category}</div>
+      <div className='product-title'>{name}</div>
       <div className='product-description'>
-        Daikin Stylish combines excellent design and technology to deliver a
-        total climate solution for any interior.
+        {descriptions}
       </div>
       <div className='product-cta'>
         <div className='left'>
-          <button onClick={changes} data-id={products} data-qty={quantity} className='add-to-cart btn'>Add to cart</button>
+          <button onClick={changes} data-id={products} data-name={name} data-img={img} data-price={price} data-qty={quantity} className='add-to-cart btn'>Add to cart</button>
         </div>
 
         <div className='right'>
