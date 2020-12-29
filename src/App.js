@@ -13,17 +13,18 @@ function App() {
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
    */
-  const [lastMessage, setLastMessage] = useState({})
-  const [chatLog, setChatLog] = useState([])
+  const [message, setMessage] = useState({})
+  const [chats, setChats] = useState([])
+
+  const [item, setItem] = useState([])
+  const [cart, setCart] = useState(0)
+  const [amounts, setAmounts] = useState(0)
 
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
-      console.log(newMessage)
-      console.log(chatLog)
-      // keep data in component state
-      setLastMessage(newMessage)
-      setChatLog(chatLog)
+      attachChat(newMessage, chatLog);
     },
+
   }
   // init kindly chat
   useEffect(() => {
@@ -37,9 +38,11 @@ function App() {
   })
   // ----- END kindly window event listener
 
-  const [item, setItem] = useState([])
-  const [cart, setCart] = useState(0)
-  const [amounts, setAmounts] = useState(0)
+  const attachChat = (message, chat_log) => {
+     setMessage(message);
+     setChats([...chat_log]);
+  }
+
 
   const handleChange = e => {
     let productID = e.currentTarget.dataset.id
@@ -92,7 +95,7 @@ function App() {
 
         <Switch>
           <Route path='/cart'>
-            <CartPage items={item} total={amounts} />
+            <CartPage chatid={chats[0]} items={item} total={amounts} />
           </Route>
           <Route path='/brands'>
             <BrandsSelect />
@@ -101,9 +104,7 @@ function App() {
             <Homepage myChange={handleChange} />
           </Route>
         </Switch>
-
         <AssistantPerson />
-        <div>{JSON.stringify(lastMessage)}</div>
       </Router>
     </div>
   )

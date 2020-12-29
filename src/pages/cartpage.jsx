@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../styles/pages/_cart.scss'
 import '../styles/components/_contact-modal.scss'
 import CartLineItem from '../components/cart-line-item'
@@ -20,11 +20,15 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage({items, total}) {
+export default function CartPage({items, total, chatid}) {
   // var subtitle
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [data, setData] = useState({});
+
+  useEffect(() => {
+    console.log(chatid.chat_id);
+  });
 
   function openModal() {
     setIsOpen(true)
