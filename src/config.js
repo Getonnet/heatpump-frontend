@@ -1,5 +1,5 @@
 const configure = {
-    "API_URL": "http://localhost:3000/api/"
+  API_URL: 'https://hit.getonnet.dev/',
 }
 
 export default configure

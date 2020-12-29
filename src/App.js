@@ -71,7 +71,6 @@ function App() {
       setItem(curItems)
     }
     setCart(item.length)
-
     getTotal()
   }
 
@@ -103,7 +102,6 @@ function App() {
         </Switch>
 
         <AssistantPerson />
-        <div>{JSON.stringify(lastMessage)}</div>
       </Router>
     </div>
   )
