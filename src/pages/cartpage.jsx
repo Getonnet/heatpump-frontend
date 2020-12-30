@@ -29,7 +29,7 @@ export default function CartPage({items, total, chatid}) {
 
   useEffect(() => {
     async function fetchData() {
-      axios.get(configure.kindly_api + `5feb10780cafc4000a1eba5c`, {
+      axios.get(configure.kindly_api + chatid, {
         headers: {
           'Authorization': `Bearer ${configure.token}`
         }
@@ -85,6 +85,7 @@ export default function CartPage({items, total, chatid}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+
     let config = {
       method: 'post',
       url: configure.API_URL + 'make-order',
@@ -96,12 +97,12 @@ export default function CartPage({items, total, chatid}) {
     };
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        if(response.status === 200){
+          window.location.href = '/'; // redirect to home page
+        }
       }).catch(function (error) {
         console.log(error);
       });
-
-
   }
 
 
