@@ -7,7 +7,8 @@ import ModalCloseIcon from '../images/svg/modalClose'
 import InputNameIcon from '../images/input-name-icon'
 import InputEmailIcon from '../images/input-email-icon'
 import InputPhoneIcon from '../images/input-phone-icon'
-// import HeatPumpImage from '../images/svg/heatpump-img'
+import axios from 'axios'
+import configure from '../config'
 
 const customModalStyles = {
   content: {
@@ -27,8 +28,19 @@ export default function CartPage({items, total, chatid}) {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    console.log(chatid.chat_id);
-  });
+    async function fetchData() {
+      axios.get(configure.kindly_api + `5feb10780cafc4000a1eba5c`, {
+        headers: {
+          'Authorization': `Bearer ${configure.token}`
+        }
+      }).then(response => {
+        let res_data = response.data;
+        getChatData(res_data.chat.context)
+      })
+    }
+    if(chatid !== '')
+    fetchData()
+  }, [])
 
   function openModal() {
     setIsOpen(true)
@@ -43,12 +55,54 @@ export default function CartPage({items, total, chatid}) {
     setIsOpen(false)
   }
 
+  const getChatData = (chatData) => {
+    const inputData = {...data};
+    let products = {};
+    items.map(row => (products[row.id] = row.qty)); //order products list
+
+    inputData['name'] = chatData.navn || '';
+    inputData['email'] = chatData.epost || '';
+    inputData['contact'] = chatData.telefonnummer || '';
+    inputData['address'] = chatData.gateadresse || '';
+    inputData['zip_code'] = chatData.postnummer || '';
+    inputData['area_info'] = chatData.kvadratmeter || '';
+    inputData['wall_type'] = chatData.veggtype || '';
+    inputData['insulated'] = chatData.isolert || '';
+    inputData['uniq_session'] = chatid || '';
+    inputData['items'] = products;
+
+
+    setData(inputData);
+  }
+
   const handleChange = ({currentTarget: input}) => {
     const inputData = {...data};
     inputData[input.name] = input.value;
     setData(inputData);
   }
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let config = {
+      method: 'post',
+      url: configure.API_URL + 'make-order',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data : JSON.stringify(data)
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+
+  }
 
 
   return (
@@ -106,6 +160,11 @@ export default function CartPage({items, total, chatid}) {
         </div>
 
         <form className='collect-data-form'>
+          <input type="hidden" name='zip_code' value={data.zip_code || ''}/>
+          <input type="hidden" name='area_info' value={data.area_info || ''}/>
+          <input type="hidden" name='insulated' value={data.insulated || ''}/>
+          <input type="hidden" name='wall_type' value={data.wall_type || ''}/>
+
           <div className='left'>
             <div className='form-field'>
               <label htmlFor='name'>Your Name</label>
@@ -137,7 +196,7 @@ export default function CartPage({items, total, chatid}) {
                   <InputPhoneIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='phone' name="phone" onChange={handleChange} value={data.phone || ''} placeholder='phone' />
+                  <input type='text' id='phone' name="contact" onChange={handleChange} value={data.contact || ''} placeholder='phone' />
                 </div>
               </div>
             </div>
@@ -145,13 +204,13 @@ export default function CartPage({items, total, chatid}) {
 
           <div className='right'>
             <div className='form-field'>
-              <label htmlFor='message'>Message</label>
-              <textarea name='message' id='message' name="message" onChange={handleChange} value={data.message || ''} rows='100%' />
+              <label htmlFor='message'>Address</label>
+              <textarea id='message' name="address" onChange={handleChange} value={data.address || ''} rows='100%' />
             </div>
           </div>
 
           <div className='bottom'>
-            <button type='submit' className='btn'>
+            <button onClick={handleSubmit} type='submit' className='btn'>
               Send Request
             </button>
           </div>
