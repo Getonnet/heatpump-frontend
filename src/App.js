@@ -92,7 +92,7 @@ function App() {
 
         <Switch>
           <Route path='/cart'>
-            <CartPage chatid={chats[0]} items={item} total={amounts} />
+            <CartPage chatid={chats.length > 0 ? chats[0].chat_id : ''} items={item} total={amounts} />
           </Route>
           <Route path='/products'>
             <Homepage myChange={handleChange} />
