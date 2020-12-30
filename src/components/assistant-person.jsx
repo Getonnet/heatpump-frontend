@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react'
 // import VideoPosterImg from '../images/video-poster.png'
 import '../styles/components/_video-assistant.scss'
+import { allVideos } from '../config'
 
 export default function AssistantPerson() {
   const firstVideo = useRef(null)
 
-  const [activeVideo, setActiveVideo] = useState('greetings')
+  const [activeVideo, setActiveVideo] = useState('greet')
 
-  const handleVideoEnd = () => {
-    setActiveVideo('idle')
+  const handleFirstVideoEnd = e => {
+    console.log(e.target.duration)
   }
 
   return (
@@ -16,21 +17,21 @@ export default function AssistantPerson() {
       <div className='container'>
         <div className='videos-wrap'>
           {/*<img src={VideoPosterImg} alt='video poseter' />*/}
-          {activeVideo === 'greetings' ? (
+          {activeVideo === 'greet' ? (
             <video
               controls={false}
               autoPlay
               muted
               ref={firstVideo}
-              onEnded={handleVideoEnd}>
+              onEnded={handleFirstVideoEnd}>
               {/*-- say hello --*/}
-              <source src='/videos/01_HELLO_480.mp4' type={'video/mp4'} />
+              <source src={allVideos.greet.src} type={'video/mp4'} />
               Your browser does not support the video tag.
             </video>
           ) : activeVideo === 'idle' ? (
             <video controls={false} autoPlay muted loop ref={firstVideo}>
               {/*-- stare loop --*/}
-              <source src='/videos/00_MAIN_480.mp4' type={'video/mp4'} />
+              <source src={allVideos.idle.src} type={'video/mp4'} />
               Your browser does not support the video tag.
             </video>
           ) : (
