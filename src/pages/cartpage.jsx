@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/pages/_cart.scss'
 import '../styles/components/_contact-modal.scss'
 import CartLineItem from '../components/cart-line-item'
@@ -20,15 +20,14 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage({items, total, chatid}) {
+export default function CartPage({ items, total, chatid }) {
   // var subtitle
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const [data, setData] = useState({});
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [data, setData] = useState({})
 
   useEffect(() => {
-    console.log(chatid.chat_id);
-  });
+    chatid ? console.log(chatid.chat_id) : console.log('Chat Id not found')
+  })
 
   function openModal() {
     setIsOpen(true)
@@ -43,13 +42,11 @@ export default function CartPage({items, total, chatid}) {
     setIsOpen(false)
   }
 
-  const handleChange = ({currentTarget: input}) => {
-    const inputData = {...data};
-    inputData[input.name] = input.value;
-    setData(inputData);
+  const handleChange = ({ currentTarget: input }) => {
+    const inputData = { ...data }
+    inputData[input.name] = input.value
+    setData(inputData)
   }
-
-
 
   return (
     <div className='cart-page'>
@@ -66,20 +63,36 @@ export default function CartPage({items, total, chatid}) {
             </thead>
 
             <tbody>
-              {
+              {items.length ? (
                 items.map(row => (
-                  <CartLineItem key={row.id} product={row.id} name={row.names} price={row.prices} photo={row.photo} quantity={row.qty} />
+                  <CartLineItem
+                    key={row.id}
+                    product={row.id}
+                    name={row.names}
+                    price={row.prices}
+                    photo={row.photo}
+                    quantity={row.qty}
+                  />
                 ))
-              }
+              ) : (
+                <tr style={{ textAlign: 'center', fontSize: '20px' }}>
+                  <td colSpan={4}>Your cart is empty</td>
+                </tr>
+              )}
+
               {/*cart total*/}
-              <tr>
-                <td />
-                <td>
-                  <span className='discount'>Total</span>
-                </td>
-                <td />
-                <td>{total} kr</td>
-              </tr>
+              {total > 0 ? (
+                <tr>
+                  <td />
+                  <td>
+                    <span className='discount'>Total</span>
+                  </td>
+                  <td />
+                  <td>{total} kr</td>
+                </tr>
+              ) : (
+                ''
+              )}
             </tbody>
           </table>
         </div>
@@ -114,7 +127,14 @@ export default function CartPage({items, total, chatid}) {
                   <InputNameIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='name' name="name" onChange={handleChange} value={data.name || ''} placeholder='name' />
+                  <input
+                    type='text'
+                    id='name'
+                    name='name'
+                    onChange={handleChange}
+                    value={data.name || ''}
+                    placeholder='name'
+                  />
                 </div>
               </div>
             </div>
@@ -126,7 +146,14 @@ export default function CartPage({items, total, chatid}) {
                   <InputEmailIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='email' name="email" onChange={handleChange} value={data.email || ''} placeholder='email' />
+                  <input
+                    type='text'
+                    id='email'
+                    name='email'
+                    onChange={handleChange}
+                    value={data.email || ''}
+                    placeholder='email'
+                  />
                 </div>
               </div>
             </div>
@@ -137,7 +164,14 @@ export default function CartPage({items, total, chatid}) {
                   <InputPhoneIcon />
                 </div>
                 <div className='input'>
-                  <input type='text' id='phone' name="phone" onChange={handleChange} value={data.phone || ''} placeholder='phone' />
+                  <input
+                    type='text'
+                    id='phone'
+                    name='phone'
+                    onChange={handleChange}
+                    value={data.phone || ''}
+                    placeholder='phone'
+                  />
                 </div>
               </div>
             </div>
@@ -146,7 +180,14 @@ export default function CartPage({items, total, chatid}) {
           <div className='right'>
             <div className='form-field'>
               <label htmlFor='message'>Message</label>
-              <textarea name='message' id='message' name="message" onChange={handleChange} value={data.message || ''} rows='100%' />
+              <textarea
+                name='message'
+                id='message'
+                name='message'
+                onChange={handleChange}
+                value={data.message || ''}
+                rows='100%'
+              />
             </div>
           </div>
 

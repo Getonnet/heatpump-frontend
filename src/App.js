@@ -22,9 +22,8 @@ function App() {
 
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
-      attachChat(newMessage, chatLog);
+      attachChat(newMessage, chatLog)
     },
-
   }
   // init kindly chat
   useEffect(() => {
@@ -39,10 +38,9 @@ function App() {
   // ----- END kindly window event listener
 
   const attachChat = (message, chat_log) => {
-     setMessage(message);
-     setChats([...chat_log]);
+    setMessage(message)
+    setChats([...chat_log])
   }
-
 
   const handleChange = e => {
     let productID = e.currentTarget.dataset.id
@@ -96,13 +94,14 @@ function App() {
           <Route path='/cart'>
             <CartPage chatid={chats[0]} items={item} total={amounts} />
           </Route>
-          <Route path='/brands'>
-            <BrandsSelect />
-          </Route>
-          <Route path='/'>
+          <Route path='/products'>
             <Homepage myChange={handleChange} />
           </Route>
+          <Route path='/'>
+            <BrandsSelect />
+          </Route>
         </Switch>
+
         <AssistantPerson />
       </Router>
     </div>
