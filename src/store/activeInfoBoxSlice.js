@@ -6,17 +6,20 @@ export const activeInfoBoxSlice = createSlice({
     value: '',
   },
   reducers: {
-    updateLog: (state, action) => {
+    updateActiveInfoBox: (state, action) => {
       state.value = action.payload
     },
-    clearLog: state => {
-      state.value = []
+    clearActiveInfoBox: state => {
+      state.value = ''
     },
   },
 })
 
-export const { updateLog, clearLog } = activeInfoBoxSlice.actions
+export const {
+  updateActiveInfoBox,
+  clearActiveInfoBox,
+} = activeInfoBoxSlice.actions
 
-export const selectCount = state => state.activeInfoBox.value
+export const selectActiveInfoBox = state => state.activeInfoBox.value
 
 export default activeInfoBoxSlice.reducer

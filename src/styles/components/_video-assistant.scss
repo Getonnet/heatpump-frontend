@@ -13,4 +13,11 @@
     display: block;
     width: 100%;
   }
+
+  video {
+    display: none;
+    &.is-visible {
+      display: block;
+    }
+  }
 }

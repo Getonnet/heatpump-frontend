@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
 import CartPage from './pages/cartpage'
+import { useSelector } from 'react-redux'
+import { selectActiveInfoBox } from './store/activeInfoBoxSlice'
 
 function App() {
   /**
@@ -85,22 +87,45 @@ function App() {
     setAmounts(total)
   }
 
+  /**
+   * infobox visibility logic
+   */
+  const activeInfoBox = useSelector(selectActiveInfoBox)
+
   return (
     <div className='App' style={{ backgroundImage: `url('${bodyBgImage}')` }}>
       <Router>
         <Header items={cart} />
 
-        <Switch>
-          <Route path='/cart'>
-            <CartPage chatid={chats.length > 0 ? chats[0].chat_id : ''} items={item} total={amounts} />
-          </Route>
-          <Route path='/products'>
-            <Homepage myChange={handleChange} />
-          </Route>
-          <Route path='/'>
-            <BrandsSelect />
-          </Route>
-        </Switch>
+        {activeInfoBox === 'brandSelect' ? (
+          <BrandsSelect />
+        ) : activeInfoBox === 'products' ? (
+          <Homepage myChange={handleChange} />
+        ) : activeInfoBox === cart ? (
+          <CartPage
+            chatid={chats.length > 0 ? chats[0].chat_id : ''}
+            items={item}
+            total={amounts}
+          />
+        ) : (
+          ''
+        )}
+
+        {/*<Switch>*/}
+        {/*  <Route path='/cart'>*/}
+        {/*    <CartPage*/}
+        {/*      chatid={chats.length > 0 ? chats[0].chat_id : ''}*/}
+        {/*      items={item}*/}
+        {/*      total={amounts}*/}
+        {/*    />*/}
+        {/*  </Route>*/}
+        {/*  <Route path='/products'>*/}
+        {/*    <Homepage myChange={handleChange} />*/}
+        {/*  </Route>*/}
+        {/*  <Route path='/'>*/}
+        {/*    <BrandsSelect />*/}
+        {/*  </Route>*/}
+        {/*</Switch>*/}
 
         <AssistantPerson />
       </Router>
