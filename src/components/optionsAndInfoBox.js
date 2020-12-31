@@ -17,17 +17,6 @@ export default function OptionsAndInfoBox() {
 
           <p>"GDPR" text must be entered here</p>
           <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
-          <p>"GDPR" text must be entered here</p>
         </div>
       </div>
     </div>
