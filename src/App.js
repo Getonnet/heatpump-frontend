@@ -4,23 +4,27 @@ import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import BrandsSelect from './pages/brandSelect'
+// import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
-import CartPage from './pages/cartpage'
+// import CartPage from './pages/cartpage'
 import { useSelector } from 'react-redux'
 import { selectActiveInfoBox } from './store/activeInfoBoxSlice'
+import {
+  selectCartCount,
+  selectCartTotal,
+  selectProducts,
+} from './store/cartSlice'
 
 function App() {
+  const products = useSelector(selectProducts)
+  const cartCount = useSelector(selectCartCount)
+  const cartTotal = useSelector(selectCartTotal)
   /**
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
    */
   const [message, setMessage] = useState({})
   const [chats, setChats] = useState([])
-
-  const [item, setItem] = useState([])
-  const [cart, setCart] = useState(0)
-  const [amounts, setAmounts] = useState(0)
 
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
@@ -44,49 +48,6 @@ function App() {
     setChats([...chat_log])
   }
 
-  const handleChange = e => {
-    let productID = e.currentTarget.dataset.id
-    let quantity = e.currentTarget.dataset.qty
-    let price = e.currentTarget.dataset.price
-    let name = e.currentTarget.dataset.name
-    let img = e.currentTarget.dataset.img
-
-    let currentItem = item
-
-    if (parseInt(quantity) !== 0) {
-      let i = currentItem.findIndex(x => x.id === productID)
-
-      if (i > -1) {
-        // Update product quantity if exist
-        currentItem[i].qty = quantity
-      } else {
-        currentItem.push({
-          id: productID,
-          qty: quantity,
-          prices: price,
-          names: name,
-          photo: img,
-        })
-      }
-      setItem(currentItem)
-    } else {
-      let curItems = currentItem.filter((x, index, arr) => x.id !== productID)
-      setItem(curItems)
-    }
-    setCart(item.length)
-    getTotal()
-  }
-
-  const getTotal = () => {
-    let amount = item.map(x => x.qty * x.prices)
-
-    let total = amount.reduce((a, b) => {
-      return a + b
-    }, 0)
-
-    setAmounts(total)
-  }
-
   /**
    * infobox visibility logic
    */
@@ -95,21 +56,23 @@ function App() {
   return (
     <div className='App' style={{ backgroundImage: `url('${bodyBgImage}')` }}>
       <Router>
-        <Header items={cart} />
+        <Header />
 
-        {activeInfoBox === 'brandSelect' ? (
-          <BrandsSelect />
-        ) : activeInfoBox === 'products' ? (
-          <Homepage myChange={handleChange} />
-        ) : activeInfoBox === cart ? (
-          <CartPage
-            chatid={chats.length > 0 ? chats[0].chat_id : ''}
-            items={item}
-            total={amounts}
-          />
-        ) : (
-          ''
-        )}
+        <Homepage />
+
+        {/*{activeInfoBox === 'brandSelect' ? (*/}
+        {/*  <BrandsSelect />*/}
+        {/*) : activeInfoBox === 'products' ? (*/}
+        {/*  <Homepage myChange={handleChange} />*/}
+        {/*) : activeInfoBox === cart ? (*/}
+        {/*  <CartPage*/}
+        {/*    chatid={chats.length > 0 ? chats[0].chat_id : ''}*/}
+        {/*    items={products}*/}
+        {/*    total={cartTotal}*/}
+        {/*  />*/}
+        {/*) : (*/}
+        {/*  ''*/}
+        {/*)}*/}
 
         <AssistantPerson />
       </Router>
