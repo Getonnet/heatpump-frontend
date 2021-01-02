@@ -39,7 +39,8 @@ export default function CartPage({ items, total, chatid }) {
           getChatData(res_data.chat.context)
         })
     }
-    if (chatid !== '') fetchData()
+    if (chatid !== '')
+      fetchData()
   }, [])
 
   function openModal() {

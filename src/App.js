@@ -2,35 +2,51 @@ import { useState, useEffect } from 'react'
 import Header from './components/header'
 import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-// import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
-// import CartPage from './pages/cartpage'
-import { useSelector } from 'react-redux'
-import { selectActiveInfoBox } from './store/activeInfoBoxSlice'
+import BrandsSelect from './pages/brandSelect'
+import CartPage from './pages/cartpage'
+import GDPRNotice from './components/gdprNotice'
+
+import { useDispatch, useSelector } from 'react-redux'
 import {
-  selectCartCount,
-  selectCartTotal,
-  selectProducts,
-} from './store/cartSlice'
+  updateActiveInfoBox,
+  selectActiveInfoBox,
+} from './store/activeInfoBoxSlice'
+import { selectCartTotal, selectProducts } from './store/cartSlice'
+import { updateLog } from './store/chatLogSlice'
+import { updateActiveVideo } from './store/activeVideoSlice'
 
 function App() {
+  const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-  const cartCount = useSelector(selectCartCount)
   const cartTotal = useSelector(selectCartTotal)
+
   /**
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
    */
-  const [message, setMessage] = useState({})
-  const [chats, setChats] = useState([])
+  const [lastChatLog, setLastChatLog] = useState({})
 
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
-      attachChat(newMessage, chatLog)
+      let id = newMessage.exchange_id
+      console.log(newMessage)
+      // on new message
+      setLastChatLog(newMessage)
+      dispatch(updateLog(newMessage))
+
+      if (id === '7aeb63aa-519b-4063-a48a-97d5124e8ca3') {
+        dispatch(updateActiveInfoBox('brandSelect'))
+        dispatch(updateActiveVideo('pointLeft'))
+      } else if (id === '3cd847f1-40fa-4c70-b187-273b0a604989') {
+        dispatch(updateActiveInfoBox('GDPR'))
+        dispatch(updateActiveVideo('pointLeft'))
+      }
     },
   }
+
   // init kindly chat
   useEffect(() => {
     let script = document.createElement('script')
@@ -43,10 +59,7 @@ function App() {
   })
   // ----- END kindly window event listener
 
-  const attachChat = (message, chat_log) => {
-    setMessage(message)
-    setChats([...chat_log])
-  }
+  useEffect(() => {})
 
   /**
    * infobox visibility logic
@@ -58,21 +71,23 @@ function App() {
       <Router>
         <Header />
 
-        <Homepage />
-
-        {/*{activeInfoBox === 'brandSelect' ? (*/}
-        {/*  <BrandsSelect />*/}
-        {/*) : activeInfoBox === 'products' ? (*/}
-        {/*  <Homepage myChange={handleChange} />*/}
-        {/*) : activeInfoBox === cart ? (*/}
-        {/*  <CartPage*/}
-        {/*    chatid={chats.length > 0 ? chats[0].chat_id : ''}*/}
-        {/*    items={products}*/}
-        {/*    total={cartTotal}*/}
-        {/*  />*/}
-        {/*) : (*/}
-        {/*  ''*/}
-        {/*)}*/}
+        {activeInfoBox === 'brandSelect' ? (
+          <BrandsSelect />
+        ) : activeInfoBox === 'GDPR' ? (
+          <GDPRNotice />
+        ) : activeInfoBox === 'products' ? (
+          <Homepage />
+        ) : activeInfoBox === 'cart' ? (
+          <CartPage
+            chatid={
+              Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
+            }
+            items={products}
+            total={cartTotal}
+          />
+        ) : (
+          ''
+        )}
 
         <AssistantPerson />
       </Router>

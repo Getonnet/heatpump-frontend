@@ -1,8 +1,12 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import '../styles/components/_video-assistant.scss'
 import { allVideos } from '../config'
-import { updateActiveInfoBox } from '../store/activeInfoBoxSlice'
-import { useDispatch } from 'react-redux'
+// import {
+//   updateActiveInfoBox,
+//   selectActiveInfoBox,
+// } from '../store/activeInfoBoxSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectActiveVideo, updateActiveVideo } from '../store/activeVideoSlice'
 // import VideoPosterImg from '../images/video-poster.png'
 /**
  * Try THESE
@@ -10,7 +14,7 @@ import { useDispatch } from 'react-redux'
  * separate each video into own components and play with a prop function
  *
  */
-export default function AssistantPerson() {
+export default function AssistantPerson({ videoType }) {
   const videoWrap = useRef(null)
   const greetVideo = useRef(null)
   const idleVideo = useRef(null)
@@ -20,15 +24,38 @@ export default function AssistantPerson() {
   const freezingVideo = useRef(null)
   const dispatch = useDispatch()
 
-  const [activeVideo, setActiveVideo] = useState('greet')
+  const activeVideo = useSelector(selectActiveVideo)
   // let activeInfoBox = useSelector(selectActiveInfoBox)
 
-  const handleFirstVideoEnd = () => {
-    dispatch(updateActiveInfoBox('brandSelect'))
-
-    setActiveVideo('pointLeft')
-    pointLeftVideo.current.play()
+  const handleVideoEnd = () => {
+    dispatch(updateActiveVideo('idle'))
+    idleVideo.current.play()
   }
+
+  const playVideo = videoName => {
+    videoName.current.play()
+  }
+
+  useEffect(() => {
+    console.log('effect running ')
+    if (activeVideo === 'greet') {
+      playVideo(greetVideo)
+    } else if (activeVideo === 'idle') {
+      playVideo(idleVideo)
+    } else if (activeVideo === 'pointLeft') {
+      playVideo(pointLeftVideo)
+    } else if (activeVideo === 'thumbsUp') {
+      playVideo(thumbsUpVideo)
+    } else if (activeVideo === 'nodding') {
+      playVideo(noddingVideo)
+    } else if (activeVideo === 'freezing') {
+      playVideo(freezingVideo)
+    }
+
+    // return () => {
+    //   dispatch(updateActiveVideo('idle'))
+    // }
+  }, [dispatch, activeVideo])
 
   return (
     <div className='assistant-person'>
@@ -41,7 +68,7 @@ export default function AssistantPerson() {
             autoPlay
             muted
             ref={greetVideo}
-            onEnded={handleFirstVideoEnd}>
+            onEnded={handleVideoEnd}>
             <source src={allVideos.greet.src} type={'video/mp4'} />
             Your browser does not support the video tag.
           </video>
@@ -51,6 +78,7 @@ export default function AssistantPerson() {
             className={activeVideo === 'idle' ? 'is-visible' : ''}
             ref={idleVideo}
             controls={false}
+            onEnded={handleVideoEnd}
             autoPlay
             muted
             loop>
@@ -63,6 +91,7 @@ export default function AssistantPerson() {
             className={activeVideo === 'pointLeft' ? 'is-visible' : ''}
             ref={pointLeftVideo}
             controls={false}
+            onEnded={handleVideoEnd}
             autoPlay
             muted>
             <source src={allVideos.pointLeft.src} type={'video/mp4'} />
@@ -74,6 +103,7 @@ export default function AssistantPerson() {
             className={activeVideo === 'thumbsUp' ? 'is-visible' : ''}
             ref={thumbsUpVideo}
             controls={false}
+            onEnded={handleVideoEnd}
             autoPlay
             muted>
             <source src={allVideos.thumbsUp.src} type={'video/mp4'} />
@@ -85,6 +115,7 @@ export default function AssistantPerson() {
             className={activeVideo === 'nodding' ? 'is-visible' : ''}
             ref={noddingVideo}
             controls={false}
+            onEnded={handleVideoEnd}
             autoPlay
             muted>
             <source src={allVideos.nodding.src} type={'video/mp4'} />
@@ -96,6 +127,7 @@ export default function AssistantPerson() {
             className={activeVideo === 'freezing' ? 'is-visible' : ''}
             ref={freezingVideo}
             controls={false}
+            onEnded={handleVideoEnd}
             autoPlay
             muted>
             <source src={allVideos.freezing.src} type={'video/mp4'} />

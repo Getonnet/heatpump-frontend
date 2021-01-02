@@ -15,29 +15,39 @@ export const allVideos = {
     src: '/videos/00_MAIN_480.mp4',
     duration: 2,
   },
+
   greet: {
     name: 'greet',
     src: '/videos/01_HELLO_480.mp4',
     duration: 4.04,
   },
+
   thumbsUp: {
     name: 'thumbsUp',
     src: '/videos/02_THUMBSUP_480.mp4',
     duration: 4,
   },
+
   pointLeft: {
     name: 'pointLeft',
     src: '/videos/03_POINT_UPPER_LEFT_480.mp4',
     duration: 4.84,
   },
+
   nodding: {
     name: 'nodding',
     src: '/videos/04_Nodding_480.mp4',
     duration: 7.72,
   },
+
   freezing: {
     name: 'freezing',
     src: '/videos/05_Freezing_480.mp4',
     duration: 3.8,
   },
+}
+
+export const chatExchangeId = {
+  greet: '7aeb63aa-519b-4063-a48a-97d5124e8ca3',
+  two: '',
 }
