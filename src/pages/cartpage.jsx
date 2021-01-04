@@ -39,22 +39,10 @@ export default function CartPage({ items, total, chatid }) {
           getChatData(res_data.chat.context)
         })
     }
-    if (chatid !== '')
+    if (chatid !== '') {
       fetchData()
-  }, [])
-
-  function openModal() {
-    setIsOpen(true)
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00'
-  }
-
-  function closeModal() {
-    setIsOpen(false)
-  }
+    }
+  })
 
   const getChatData = chatData => {
     const inputData = { ...data }
@@ -73,6 +61,19 @@ export default function CartPage({ items, total, chatid }) {
     inputData['items'] = products
 
     setData(inputData)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = '#f00'
+  }
+
+  function closeModal() {
+    setIsOpen(false)
   }
 
   const handleChange = ({ currentTarget: input }) => {

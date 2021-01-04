@@ -47,7 +47,7 @@ export const allVideos = {
   },
 }
 
-export const chatExchangeId = {
-  greet: '7aeb63aa-519b-4063-a48a-97d5124e8ca3',
-  two: '',
-}
+// export const chatExchangeId = {
+//   greet: '7aeb63aa-519b-4063-a48a-97d5124e8ca3',
+//   two: '',
+// }

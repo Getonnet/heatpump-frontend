@@ -5,12 +5,13 @@ import '../styles/components/_suggested-products.scss'
 import configure from '../config.js'
 import axios from 'axios'
 
-export default function Homepage() {
+export default function Homepage(props) {
+  // const productType = props.productType
   const [products, setProducts] = useState([])
 
   const [selectedProducts, setSelectedProducts] = useState([])
-  const [cartCount, setCartCount] = useState(0)
-  const [cartTotal, setCartTotal] = useState(0)
+  // const [cartCount, setCartCount] = useState(0)
+  // const [cartTotal, setCartTotal] = useState(0)
 
   // ----------- start cart calculations
   const handleChange = e => {
@@ -42,18 +43,16 @@ export default function Homepage() {
       let curItems = currentItem.filter((x, index, arr) => x.id !== productID)
       setSelectedProducts(curItems)
     }
-    setCartCount(selectedProducts.length)
+    // setCartCount(selectedProducts.length)
     getTotal()
   }
 
   const getTotal = () => {
-    let amount = selectedProducts.map(x => x.qty * x.prices)
-
-    let total = amount.reduce((a, b) => {
-      return a + b
-    }, 0)
-
-    setCartTotal(total)
+    // let amount = selectedProducts.map(x => x.qty * x.prices)
+    // let total = amount.reduce((a, b) => {
+    //   return a + b
+    // }, 0)
+    // setCartTotal(total)
   }
   // ----------- end cart calculations
 

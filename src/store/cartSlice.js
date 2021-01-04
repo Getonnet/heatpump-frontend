@@ -32,9 +32,9 @@ export const {
   clearCart,
 } = cartSlice.actions
 
-// export const updateCartAsync = log => dispatch => {
-//   dispatch(updateCart(log))
-// }
+export const updateCartAsync = chatId => dispatch => {
+  dispatch(updateSelectedProducts([]))
+}
 
 export const selectProducts = state => state.cart.selectedProducts
 export const selectCartTotal = state => state.cart.cartTotal

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import HeatPumpImage from '../images/svg/heatpump-img'
 import '../styles/components/_product-card.scss'
 import MinusIcon from '../images/svg/minus'
 import PlusIcon from '../images/svg/plus'
+// import HeatPumpImage from '../images/svg/heatpump-img'
 
 export default function ProductCard({
   products,
@@ -27,7 +27,7 @@ export default function ProductCard({
   return (
     <div className='card card--product'>
       <div className='product-image'>
-        <img src={img} alt='Product Image' />
+        <img src={img} />
       </div>
 
       <div className='product-category'>{category}</div>
