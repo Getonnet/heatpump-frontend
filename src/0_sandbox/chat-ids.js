@@ -1,0 +1,58 @@
+const exchange_id_for_greetings = '7aeb63aa-519b-4063-a48a-97d5124e8ca3'
+
+const newMessage = {
+  activeInfoBox: {
+    value: 'brandSelect',
+  },
+  chatLog: {
+    lastMessage: {
+      is_followup: false,
+      message:
+        'Ved bestilling kan du velge å betale med kort, avbetaling eller be om å få tilsendt faktura.\n<br><br>\nNår du har bestilt, vil du bli kontaktet av en av våre sertifiserte montører som vil stille noen kontrollspørsmål og avtale tid for montasje.<br><br>Trygt og enkelt! 👍\n\nFør jeg kan gi deg råd og veiledning så vil jeg gjerne bli litt kjent med deg. Jeg heter Morten, hva er ditt fulle navn?',
+      attachments: [],
+      message_with_kindly_entities: '',
+      labels_triggered: [],
+      image_carousel: null,
+      thon_image_above_text: false,
+      from_webhook: false,
+      agent_joined: false,
+      _id: '5ff04c646ba5bf0009515c57',
+      bot_id: 3342,
+      skill_subscription_id: null,
+      chat_id: '5ff04c5e0cafc4000a240402',
+      chat_source: 'web',
+      chat_language_code: 'nb',
+      reply_to_id: null,
+      from_bot: true,
+      sender: 'BOT',
+      image_carousel_size: 1000,
+      video_source: null,
+      url_trigger: null,
+      reply_type: 'STANDARD',
+      exchange_id: '3cd847f1-40fa-4c70-b187-273b0a604989',
+      parent_exchange_id: null,
+      chatbubble_hide_input_field: false,
+      webhook_url: null,
+      title: 'Fortsett',
+      exchange_type: 'usersays',
+      reply_candidates: [],
+      suggestions: [],
+      handler: 'TRIGGER_DIALOGUE',
+      triggered_chat_start: false,
+      created: '2021-01-02T10:35:16.940Z',
+      __v: 0,
+      id: '5ff04c646ba5bf0009515c57',
+      buttons: [],
+    },
+    allMessages: [],
+    formattedChatLog: [],
+  },
+  cart: {
+    selectedProducts: [],
+    cartTotal: 0,
+    cartCount: 0,
+  },
+  activeVideo: {
+    value: 'idle',
+  },
+}

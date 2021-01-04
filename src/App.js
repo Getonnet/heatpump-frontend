@@ -2,30 +2,120 @@ import { useState, useEffect } from 'react'
 import Header from './components/header'
 import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import BrandsSelect from './pages/brandSelect'
 import Homepage from './pages/home'
+import BrandsSelect from './pages/brandSelect'
 import CartPage from './pages/cartpage'
+import GDPRNotice from './components/gdprNotice'
+import InfoTextBox1 from './components/infoTextBox1'
+
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  updateActiveInfoBox,
+  selectActiveInfoBox,
+} from './store/activeInfoBoxSlice'
+import { selectCartTotal, selectProducts } from './store/cartSlice'
+import { updateLog } from './store/chatLogSlice'
+import { updateActiveVideo } from './store/activeVideoSlice'
 
 function App() {
+  const dispatch = useDispatch()
+  const products = useSelector(selectProducts)
+  const cartTotal = useSelector(selectCartTotal)
+
   /**
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
    */
-  const [message, setMessage] = useState({})
-  const [chats, setChats] = useState([])
+  const [lastChatLog, setLastChatLog] = useState({})
+  let lastTwoMessagesArr = []
 
-  const [item, setItem] = useState([])
-  const [cart, setCart] = useState(0)
-  const [amounts, setAmounts] = useState(0)
+  const setLastTwoMessages = message => {
+    if (lastTwoMessagesArr.length > 1) {
+      lastTwoMessagesArr = []
+    }
+
+    lastTwoMessagesArr.push(message)
+  }
 
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
-      attachChat(newMessage, chatLog);
-    },
+      let id = newMessage.exchange_id
+      let message = newMessage.message || ''
+      // set new last message if 'message' property found
+      setLastTwoMessages(message)
 
+      console.log(newMessage)
+      setLastChatLog(newMessage)
+      dispatch(updateLog(newMessage))
+
+      console.log('second last message is: -- :')
+      console.log(lastTwoMessagesArr)
+
+      if (id === '7aeb63aa-519b-4063-a48a-97d5124e8ca3') {
+        // greetings
+        dispatch(updateActiveInfoBox('brandSelect'))
+        dispatch(updateActiveVideo('pointLeft'))
+      } else if (id === '3cd847f1-40fa-4c70-b187-273b0a604989') {
+        // second step show gdpr
+        dispatch(updateActiveInfoBox('GDPR'))
+        dispatch(updateActiveVideo('pointLeft'))
+      } else if (id === 'ef0c6925-4a71-49ca-a7f2-92914f167cec') {
+        // name, email, phone, address collected, now asked size of apartment
+        dispatch(updateActiveVideo('nodding'))
+      } else if (
+        id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
+        lastTwoMessagesArr[0] === 'Dårlig'
+      ) {
+        // is you hour isolated: bad
+        dispatch(updateActiveVideo('freezing'))
+      } else if (
+        id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
+        lastTwoMessagesArr[0] === 'Godt'
+      ) {
+        // is you hour isolated: well
+        dispatch(updateActiveVideo('thumbsUp'))
+      } else if (
+        id === '88ee375d-fbe5-49bb-865d-46113d9d87dc' ||
+        id === '11c125a9-bde0-4b87-9bf4-4ffb028d74f2'
+      ) {
+        // see products triggered
+        // second id '11c......' come when user decides to
+        // change his order after all the steps taken first time
+        dispatch(updateActiveInfoBox('products'))
+        dispatch(updateActiveVideo('pointLeft'))
+      } else if (id === '5b44ef0f-6d41-454b-a5a7-9f6d8cc3c67c') {
+        // product selected
+        dispatch(updateActiveVideo('thumbsUp'))
+        dispatch(updateActiveInfoBox(''))
+      } else if (id === 'c495b32e-a1a8-4003-9b8d-a58e7b9d0000') {
+        // moving on after reading more avout product
+        dispatch(updateActiveVideo('nodding'))
+      } else if (
+        id === 'b6eef6d9-1f0d-445d-a364-148fe89d8600' ||
+        id === '41ffd8bc-88ac-48d8-8576-be248fba4a1c'
+      ) {
+        // suggested products
+        // second id '41ff.....' come when user decides to
+        // change his order after all the steps taken first time
+        dispatch(updateActiveInfoBox('suggested-products'))
+        dispatch(updateActiveVideo('pointLeft'))
+      } else if (
+        id === 'bb30d142-7dc3-4efd-98fb-0b7abdbb388a' ||
+        id === 'a6b801ea-7ceb-456a-a7bc-e68a0dcd46ce'
+      ) {
+        // confirmation of all info collected, so show cart
+        // second id 'a6b.........' is after user decides to reslect something
+        dispatch(updateActiveInfoBox('cart'))
+      } else if (id === '3dd3b9ff-dbbf-4d41-8efd-e24a28638114') {
+        // user decides to make a change, and list of all chanage able option appears
+        dispatch(updateActiveInfoBox(''))
+        dispatch(updateActiveVideo('greet'))
+      }
+    },
   }
+
   // init kindly chat
   useEffect(() => {
     let script = document.createElement('script')
@@ -37,74 +127,38 @@ function App() {
     document.body.appendChild(script)
   })
   // ----- END kindly window event listener
-
-  const attachChat = (message, chat_log) => {
-     setMessage(message);
-     setChats([...chat_log]);
-  }
-
-
-  const handleChange = e => {
-    let productID = e.currentTarget.dataset.id
-    let quantity = e.currentTarget.dataset.qty
-    let price = e.currentTarget.dataset.price
-    let name = e.currentTarget.dataset.name
-    let img = e.currentTarget.dataset.img
-
-    let currentItem = item
-
-    if (parseInt(quantity) !== 0) {
-      let i = currentItem.findIndex(x => x.id === productID)
-
-      if (i > -1) {
-        // Update product quantity if exist
-        currentItem[i].qty = quantity
-      } else {
-        currentItem.push({
-          id: productID,
-          qty: quantity,
-          prices: price,
-          names: name,
-          photo: img,
-        })
-      }
-      setItem(currentItem)
-    } else {
-      let curItems = currentItem.filter((x, index, arr) => x.id !== productID)
-      setItem(curItems)
-    }
-    setCart(item.length)
-
-    getTotal()
-  }
-
-  const getTotal = () => {
-    let amount = item.map(x => x.qty * x.prices)
-
-    let total = amount.reduce((a, b) => {
-      return a + b
-    }, 0)
-
-    setAmounts(total)
-  }
+  /**
+   * infobox visibility logic
+   */
+  const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
     <div className='App' style={{ backgroundImage: `url('${bodyBgImage}')` }}>
       <Router>
-        <Header items={cart} />
+        <Header />
 
-        <Switch>
-          <Route path='/cart'>
-            <CartPage chatid={chats.length > 0 ? chats[0].chat_id : ''} items={item} total={amounts} />
-          </Route>
-          <Route path='/brands'>
-            <BrandsSelect />
-          </Route>
-          <Route path='/'>
-            <Homepage myChange={handleChange} />
-          </Route>
-        </Switch>
-        <AssistantPerson />
+        {activeInfoBox === 'brandSelect' ? (
+          <BrandsSelect />
+        ) : activeInfoBox === 'GDPR' ? (
+          <GDPRNotice />
+        ) : activeInfoBox === 'infoTextBox1' ? (
+          <InfoTextBox1 />
+        ) : activeInfoBox === 'products' ? (
+          <Homepage productType={'products'} />
+        ) : activeInfoBox === 'suggested-products' ? (
+          <Homepage productType={'suggested-products'} />
+        ) : activeInfoBox === 'cart' ? (
+          <CartPage
+            chatid={
+              Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
+            }
+            items={products}
+            total={cartTotal}
+          />
+        ) : (
+          ''
+        )}
+        {activeInfoBox !== 'cart' && <AssistantPerson />}
       </Router>
     </div>
   )

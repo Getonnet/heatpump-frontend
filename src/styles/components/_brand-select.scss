@@ -7,10 +7,10 @@
 
 .brand-select-menu {
   //background-color: #fff;
+  //border-radius: 50%;
   height: 550px;
   width: 550px;
   position: relative;
-  //border-radius: 50%;
   border: 1px dashed rgba(25, 195, 255, 0.2);
   box-sizing: border-box;
   border-radius: 300px;
@@ -57,8 +57,9 @@
   }
 
   &.disabled {
-    opacity: 0.8;
+    opacity: 0.6;
     pointer-events: none;
+    filter: grayscale(1);
   }
 
   &:first-child {
