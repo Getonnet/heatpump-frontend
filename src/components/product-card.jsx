@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import '../styles/components/_product-card.scss'
 import MinusIcon from '../images/svg/minus'
 import PlusIcon from '../images/svg/plus'
+import {
+  addSelectedProducts,
+  removeSelectedProducts,
+  updateProductQuantity,
+  selectProducts,
+} from '../store/cartSlice'
 // import HeatPumpImage from '../images/svg/heatpump-img'
 
 export default function ProductCard({
@@ -11,9 +18,12 @@ export default function ProductCard({
   price,
   img,
   descriptions,
-  changes,
+  productType,
 }) {
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+  // const [selectedProducts, setSelectedProducts] = useState([])
+  const selectedProducts = useSelector(selectProducts)
+  const dispatch = useDispatch()
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1)
@@ -24,10 +34,60 @@ export default function ProductCard({
     else setQuantity(quantity)
   }
 
+  // ----------- start cart calculations
+  const handleChange = e => {
+    let data = e.currentTarget.dataset
+    let productID = data.id
+    let quantity = data.qty
+    let price = data.price
+    let name = data.name
+    let img = data.img
+    let productType = data.producttype
+    // let currentCartItems = ([...selectedProducts])
+
+    if (parseInt(quantity) !== 0) {
+      let i = Object.keys(selectedProducts).findIndex(x => x.id === productID)
+
+      if (i > -1) {
+        // Update product quantity if exist
+        dispatch(
+          updateProductQuantity({
+            id: productID,
+            qty: quantity,
+          })
+        )
+      } else {
+        dispatch(
+          addSelectedProducts({
+            id: productID,
+            product: {
+              id: productID,
+              qty: quantity,
+              prices: price,
+              names: name,
+              photo: img,
+              productType,
+            },
+          })
+        )
+      }
+    } else {
+      // remove product which has quantity of 0
+      dispatch(
+        removeSelectedProducts({
+          id: productID,
+        })
+      )
+      // dispatch(updateCart(filteredCartItems))
+    }
+  }
+
+  // ----------- end cart calculations
+
   return (
     <div className='card card--product'>
       <div className='product-image'>
-        <img src={img} />
+        <img src={img} alt={name} />
       </div>
 
       <div className='product-category'>{category}</div>
@@ -36,33 +96,36 @@ export default function ProductCard({
       <div className='product-cta'>
         <div className='left'>
           <button
-            onClick={changes}
+            onClick={handleChange}
             data-id={products}
             data-name={name}
             data-img={img}
             data-price={price}
             data-qty={quantity}
+            data-producttype={productType}
             className='add-to-cart btn'>
             Add to cart
           </button>
         </div>
 
-        <div className='right'>
-          <div className='product-quantity-selector'>
-            <button className='quantity-controls' onClick={decrementQuantity}>
-              <MinusIcon />
-            </button>
-            <input
-              type='number'
-              name='quantity'
-              onChange={changes}
-              value={quantity}
-            />
-            <button className='quantity-controls' onClick={incrementQuantity}>
-              <PlusIcon />
-            </button>
+        {productType !== 'products' && (
+          <div className='right'>
+            <div className='product-quantity-selector'>
+              <button className='quantity-controls' onClick={decrementQuantity}>
+                <MinusIcon />
+              </button>
+              <input
+                type='number'
+                name='quantity'
+                onChange={handleChange}
+                value={quantity}
+              />
+              <button className='quantity-controls' onClick={incrementQuantity}>
+                <PlusIcon />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

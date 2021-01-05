@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './components/header'
-import bodyBgImage from './images/home-bg.png'
+// import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -35,7 +35,6 @@ function App() {
     if (lastTwoMessagesArr.length > 1) {
       lastTwoMessagesArr = []
     }
-
     lastTwoMessagesArr.push(message)
   }
 
@@ -133,7 +132,7 @@ function App() {
   const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
-    <div className='App' style={{ backgroundImage: `url('${bodyBgImage}')` }}>
+    <div className='App'>
       <Router>
         <Header />
 
