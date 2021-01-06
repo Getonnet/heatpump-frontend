@@ -101,7 +101,8 @@ function App() {
         dispatch(updateActiveVideo('pointLeft'))
       } else if (
         id === 'bb30d142-7dc3-4efd-98fb-0b7abdbb388a' ||
-        id === 'a6b801ea-7ceb-456a-a7bc-e68a0dcd46ce'
+        id === 'a6b801ea-7ceb-456a-a7bc-e68a0dcd46ce' ||
+        id === '6eb732d0-efae-4a82-aeeb-2ffd6d61b62f'
       ) {
         // confirmation of all info collected, so show cart
         // second id 'a6b.........' is after user decides to reslect something

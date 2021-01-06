@@ -5,11 +5,12 @@ import reportWebVitals from './reportWebVitals'
 import './styles/style.scss'
 import { Provider } from 'react-redux'
 import store from './store/index'
+import MobileUsersNotice from './pages/mobileUsersNotice'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {window.innerWidth < 1000 ? <MobileUsersNotice /> : <App />}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

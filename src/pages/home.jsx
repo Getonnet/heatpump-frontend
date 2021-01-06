@@ -12,19 +12,18 @@ export default function Homepage(props) {
 
   useEffect(() => {
     async function fetchProducts() {
-
-      let params = 'AC';
-      if(productType === 'suggested-products'){
-        params = 'Accessories';
+      let params = 'AC'
+      if (productType === 'suggested-products') {
+        params = 'Accessories'
       }
-
-      axios.get(configure.API_URL + `product-recommend?types=${params}`).then(response => {
-        setAllProducts(response.data)
-      })
+      axios
+        .get(configure.API_URL + `product-recommend?types=${params}`)
+        .then(response => {
+          setAllProducts(response.data)
+        })
     }
-    fetchProducts();
-
-  }, [])
+    fetchProducts()
+  }, [productType])
 
   return (
     <div className='page-home'>

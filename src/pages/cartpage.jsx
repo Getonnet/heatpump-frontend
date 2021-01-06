@@ -39,7 +39,7 @@ export default function CartPage({ products, chatid }) {
         })
         .then(response => {
           let res_data = response.data
-          getChatData(res_data.chat.context)
+          setChatData(res_data.chat.context)
         })
     }
     if (chatid !== '') {
@@ -47,23 +47,23 @@ export default function CartPage({ products, chatid }) {
     }
   })
 
-  const getChatData = chatData => {
-    const inputData = { ...data }
+  const setChatData = chatData => {
     let formattedProducts = {}
     Object.values(products).map(row => (formattedProducts[row.id] = row.qty)) //order products list
 
-    inputData['name'] = chatData.navn || ''
-    inputData['email'] = chatData.epost || ''
-    inputData['contact'] = chatData.telefonnummer || ''
-    inputData['address'] = chatData.gateadresse || ''
-    inputData['zip_code'] = chatData.postnummer || ''
-    inputData['area_info'] = chatData.kvadratmeter || ''
-    inputData['wall_type'] = chatData.veggtype || ''
-    inputData['insulated'] = chatData.isolert || ''
-    inputData['uniq_session'] = chatid || ''
-    inputData['items'] = formattedProducts
-
-    setData(inputData)
+    setData(prevState => ({
+      ...prevState,
+      name: chatData.navn || '',
+      email: chatData.epost || '',
+      contact: chatData.telefonnummer || '',
+      address: chatData.gateadresse || '',
+      zip_code: chatData.postnummer || '',
+      area_info: chatData.kvadratmeter || '',
+      wall_type: chatData.veggtype || '',
+      insulated: chatData.isolert || '',
+      uniq_session: chatid || '',
+      items: formattedProducts,
+    }))
   }
 
   function openModal() {
@@ -80,15 +80,18 @@ export default function CartPage({ products, chatid }) {
   }
 
   const handleChange = ({ currentTarget: input }) => {
-    const inputData = { ...data }
-    inputData[input.name] = input.value
-    setData(inputData)
+    // console.log(input.name, input.value)
+    setData(prevState => ({
+      ...prevState,
+      [input.name]: input.value,
+    }))
+    // console.log(data)
   }
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    let config = {
+    let submit_config = {
       method: 'post',
       url: configure.API_URL + 'make-order',
       headers: {
@@ -97,7 +100,8 @@ export default function CartPage({ products, chatid }) {
       },
       data: JSON.stringify(data),
     }
-    axios(config)
+
+    axios(submit_config)
       .then(function (response) {
         if (response.status === 200) {
           window.location.href = '/' // redirect to home page
