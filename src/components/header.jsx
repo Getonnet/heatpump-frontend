@@ -22,6 +22,9 @@ export default function Header() {
           </div>
 
           <div className='right'>
+            <div className="language">
+              <Language className={'ml-1'} />
+            </div>
             <div className='header-cart'>
               <Link to={'/cart'}>
                 <Cart />
@@ -29,7 +32,6 @@ export default function Header() {
             </div>
             <div className='menu-toggle'>
               <MenuToggleIcon />
-              <Language className={'ml-1'} />
             </div>
           </div>
         </div>
