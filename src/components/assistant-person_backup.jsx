@@ -2,9 +2,11 @@ import React, { useState, useRef } from 'react'
 import '../styles/components/_video-assistant.scss'
 import { allVideos } from '../config'
 import { updateActiveInfoBox } from '../store/activeInfoBoxSlice'
+import { useTranslation } from 'react-i18next'
 // import VideoPosterImg from '../images/video-poster.png'
 
 export default function AssistantPerson() {
+  const { t } = useTranslation()
   const greetVideo = useRef(null)
   const videoWrap = useRef(null)
   const idleVideo = useRef(null)

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import '../styles/components/_video-assistant.scss'
 import { allVideos } from '../config'
+import { useTranslation } from 'react-i18next'
 // import {
 //   updateActiveInfoBox,
 //   selectActiveInfoBox,
@@ -15,6 +16,7 @@ import { selectActiveVideo, updateActiveVideo } from '../store/activeVideoSlice'
  *
  */
 export default function AssistantPerson({ videoType }) {
+  const { t } = useTranslation()
   const videoWrap = useRef(null)
   const greetVideo = useRef(null)
   const idleVideo = useRef(null)
@@ -70,7 +72,8 @@ export default function AssistantPerson({ videoType }) {
             ref={greetVideo}
             onEnded={handleVideoEnd}>
             <source src={allVideos.greet.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            { t('Browser') }
+            {/* Your browser does not support the video tag. */}
           </video>
 
           {/*-- video: stare loop --*/}
@@ -83,7 +86,8 @@ export default function AssistantPerson({ videoType }) {
             muted
             loop>
             <source src={allVideos.idle.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            { t('Browser') }
+            {/* Your browser does not support the video tag. */}
           </video>
 
           {/*-- video: point left --*/}
@@ -95,7 +99,8 @@ export default function AssistantPerson({ videoType }) {
             autoPlay
             muted>
             <source src={allVideos.pointLeft.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            { t('Browser') }
+            {/* Your browser does not support the video tag. */}
           </video>
 
           {/*-- video: thumbs up loop --*/}
@@ -107,7 +112,8 @@ export default function AssistantPerson({ videoType }) {
             autoPlay
             muted>
             <source src={allVideos.thumbsUp.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            { t('Browser') }
+            {/* Your browser does not support the video tag. */}
           </video>
 
           {/*-- video: nodding --*/}
@@ -119,7 +125,8 @@ export default function AssistantPerson({ videoType }) {
             autoPlay
             muted>
             <source src={allVideos.nodding.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            { t('Browser') }
+            {/* Your browser does not support the video tag. */}
           </video>
 
           {/*-- video: freezing --*/}
@@ -131,7 +138,8 @@ export default function AssistantPerson({ videoType }) {
             autoPlay
             muted>
             <source src={allVideos.freezing.src} type={'video/mp4'} />
-            Your browser does not support the video tag.
+            {/* Your browser does not support the video tag. */}
+            { t('Browser') }
           </video>
         </div>
       </div>

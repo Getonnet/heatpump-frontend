@@ -1,6 +1,5 @@
 import React from 'react'
 // import HeatPumpImage from '../images/svg/heatpump-img'
-
 export default function CartLineItem({
   product,
   quantity,
@@ -8,6 +7,7 @@ export default function CartLineItem({
   photo,
   name,
 }) {
+  
   return (
     <tr>
       <td>

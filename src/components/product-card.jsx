@@ -10,6 +10,7 @@ import {
   selectProducts,
 } from '../store/cartSlice'
 // import HeatPumpImage from '../images/svg/heatpump-img'
+import { useTranslation } from 'react-i18next'
 
 export default function ProductCard({
   products,
@@ -20,6 +21,7 @@ export default function ProductCard({
   descriptions,
   productType,
 }) {
+  const { t } = useTranslation()
   const [quantity, setQuantity] = useState(1)
   // const [selectedProducts, setSelectedProducts] = useState([])
   const selectedProducts = useSelector(selectProducts)
@@ -104,7 +106,8 @@ export default function ProductCard({
             data-qty={quantity}
             data-producttype={productType}
             className='add-to-cart btn'>
-            Add to cart
+              { t('Addtocart') }
+            {/* Add to cart */}
           </button>
         </div>
 

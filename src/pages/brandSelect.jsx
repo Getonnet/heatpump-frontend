@@ -9,7 +9,7 @@ import { clearActiveInfoBox } from '../store/activeInfoBoxSlice'
 
 export default function BrandsSelect() {
   const dispatch = useDispatch()
-
+  
   const updateSelectedBrand = () => {
     dispatch(clearActiveInfoBox())
   }
