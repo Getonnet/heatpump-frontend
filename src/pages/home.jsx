@@ -12,11 +12,18 @@ export default function Homepage(props) {
 
   useEffect(() => {
     async function fetchProducts() {
-      axios.get(configure.API_URL + 'product-recommend').then(response => {
+
+      let params = 'AC';
+      if(productType === 'suggested-products'){
+        params = 'Accessories';
+      }
+
+      axios.get(configure.API_URL + `product-recommend?types=${params}`).then(response => {
         setAllProducts(response.data)
       })
     }
-    fetchProducts()
+    fetchProducts();
+
   }, [])
 
   return (
