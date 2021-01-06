@@ -21,10 +21,13 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage({ items, total, chatid }) {
+export default function CartPage({ products, chatid }) {
   // var subtitle
   const [modalIsOpen, setIsOpen] = useState(false)
   const [data, setData] = useState({})
+
+  const productsArr = Object.values(products)
+  const cartTotal = productsArr.reduce((a, b) => a + parseInt(b['prices']), 0)
 
   useEffect(() => {
     async function fetchData() {
@@ -46,8 +49,8 @@ export default function CartPage({ items, total, chatid }) {
 
   const getChatData = chatData => {
     const inputData = { ...data }
-    let products = {}
-    items.map(row => (products[row.id] = row.qty)) //order products list
+    let formattedProducts = {}
+    Object.values(products).map(row => (formattedProducts[row.id] = row.qty)) //order products list
 
     inputData['name'] = chatData.navn || ''
     inputData['email'] = chatData.epost || ''
@@ -58,7 +61,7 @@ export default function CartPage({ items, total, chatid }) {
     inputData['wall_type'] = chatData.veggtype || ''
     inputData['insulated'] = chatData.isolert || ''
     inputData['uniq_session'] = chatid || ''
-    inputData['items'] = products
+    inputData['items'] = formattedProducts
 
     setData(inputData)
   }
@@ -120,7 +123,7 @@ export default function CartPage({ items, total, chatid }) {
             </thead>
 
             <tbody>
-              {items.map(row => (
+              {productsArr.map(row => (
                 <CartLineItem
                   key={row.id}
                   product={row.id}
@@ -137,7 +140,7 @@ export default function CartPage({ items, total, chatid }) {
                   <span className='discount'>Total</span>
                 </td>
                 <td />
-                <td>{total} kr</td>
+                <td>{cartTotal} kr</td>
               </tr>
             </tbody>
           </table>

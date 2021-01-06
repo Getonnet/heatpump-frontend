@@ -15,14 +15,13 @@ import {
   updateActiveInfoBox,
   selectActiveInfoBox,
 } from './store/activeInfoBoxSlice'
-import { selectCartTotal, selectProducts } from './store/cartSlice'
+import { selectProducts } from './store/cartSlice'
 import { updateLog } from './store/chatLogSlice'
 import { updateActiveVideo } from './store/activeVideoSlice'
 
 function App() {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-  const cartTotal = useSelector(selectCartTotal)
 
   /**
    * Kindly window event listener
@@ -151,8 +150,7 @@ function App() {
             chatid={
               Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
             }
-            items={products}
-            total={cartTotal}
+            products={products}
           />
         ) : (
           ''
