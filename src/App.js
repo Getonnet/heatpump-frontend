@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import Header from './components/header'
 // import bodyBgImage from './images/home-bg.png'
 import AssistantPerson from './components/assistant-person'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Homepage from './pages/home'
-import BrandsSelect from './pages/brandSelect'
+import Products from './components/products'
+import FAQPage from './pages/faq'
+import BrandsSelect from './components/brandSelect'
 import CartPage from './pages/cartpage'
 import GDPRNotice from './components/gdprNotice'
 import InfoTextBox1 from './components/infoTextBox1'
@@ -135,27 +136,41 @@ function App() {
     <div className='App'>
       <Router>
         <Header />
-
-        {activeInfoBox === 'brandSelect' ? (
-          <BrandsSelect />
-        ) : activeInfoBox === 'GDPR' ? (
-          <GDPRNotice />
-        ) : activeInfoBox === 'infoTextBox1' ? (
-          <InfoTextBox1 />
-        ) : activeInfoBox === 'products' ? (
-          <Homepage productType={'products'} />
-        ) : activeInfoBox === 'suggested-products' ? (
-          <Homepage productType={'suggested-products'} />
-        ) : activeInfoBox === 'cart' ? (
-          <CartPage
-            chatid={
-              Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
-            }
-            products={products}
-          />
-        ) : (
-          ''
-        )}
+        <Switch>
+          <Route path='/'>
+            {activeInfoBox === 'brandSelect' ? (
+              <BrandsSelect />
+            ) : activeInfoBox === 'GDPR' ? (
+              <GDPRNotice />
+            ) : activeInfoBox === 'infoTextBox1' ? (
+              <InfoTextBox1 />
+            ) : activeInfoBox === 'products' ? (
+              <Products productType={'products'} />
+            ) : activeInfoBox === 'suggested-products' ? (
+              <Products productType={'suggested-products'} />
+            ) : activeInfoBox === 'cart' ? (
+              <CartPage
+                chatid={
+                  Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
+                }
+                products={products}
+              />
+            ) : (
+              ''
+            )}
+          </Route>
+          <Route path='/cart'>
+            <CartPage
+              chatid={
+                Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
+              }
+              products={products}
+            />
+          </Route>
+          <Route path='/faq'>
+            <FAQPage />
+          </Route>
+        </Switch>
         {activeInfoBox !== 'cart' && <AssistantPerson />}
       </Router>
     </div>

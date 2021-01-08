@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals'
 import './styles/style.scss'
 import { Provider } from 'react-redux'
 import store from './store/index'
-import MobileUsersNotice from './pages/mobileUsersNotice'
+import MobileUsersNotice from './mobileUsersNotice'
 
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'

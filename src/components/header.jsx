@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.png'
-import MenuToggleIcon from '../images/svg/menu-toggle'
+// import MenuToggleIcon from '../images/svg/menu-toggle'
+import FAQIcon from '../images/svg/faq'
 import '../styles/components/_header.scss'
 import { Link } from 'react-router-dom'
 import Cart from './cart'
@@ -22,18 +23,21 @@ export default function Header() {
           </div>
 
           <div className='right'>
-            <div className="language">
-              <Language className={'ml-1'} />
-            </div>
             <div className='header-cart'>
               <Link to={'/cart'}>
                 <Cart />
               </Link>
             </div>
             <div className='menu-toggle'>
-              <MenuToggleIcon />
+              <Link to={'/faq'}>
+                <FAQIcon />
+              </Link>
+            </div>
+            <div className='header-language'>
+              <Language />
             </div>
           </div>
+          {/* end right */}
         </div>
       </div>
     </header>

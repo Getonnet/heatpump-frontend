@@ -8,8 +8,34 @@
   }
   .right {
     display: flex;
+    align-items: center;
   }
   .header-cart {
     margin-right: 30px;
+  }
+  .header-language {
+    margin-left: 30px;
+    background-color: rgba(#19c3ff, 0.08);
+    height: 40px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-radius: 12px;
+    padding: 5px 5px;
+
+    .btn-lang {
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+    }
+    .lang-icon {
+      margin-left: 10px;
+      // border-radius: 50%;
+      // overflow: hidden;
+    }
   }
 }
