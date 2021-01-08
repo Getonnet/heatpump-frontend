@@ -15,7 +15,7 @@ function App() {
   const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
-    <div className='App'>
+    <div className='App' style={{backgroundImage: `url('/images/home-bg.png')`}}>
       <Router>
         <Header />
         <Switch>
