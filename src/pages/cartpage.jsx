@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/pages/_cart.scss'
-import '../styles/components/_contact-modal.scss'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { useTranslation } from 'react-i18next'
+
+import { selectChatId } from '../store/chatLogSlice'
 import CartLineItem from '../components/cart-line-item'
 import Modal from 'react-modal'
+
+import '../styles/pages/_cart.scss'
+import '../styles/components/_contact-modal.scss'
+
 import ModalCloseIcon from '../images/svg/modalClose'
 import InputNameIcon from '../images/input-name-icon'
 import InputEmailIcon from '../images/input-email-icon'
 import InputPhoneIcon from '../images/input-phone-icon'
-import axios from 'axios'
+
 import configure from '../config'
-import { useTranslation } from 'react-i18next'
 
 const customModalStyles = {
   content: {
@@ -28,7 +34,7 @@ export default function CartPage({ products }) {
   const [modalIsOpen, setIsOpen] = useState(false)
   const [data, setData] = useState({})
 
-  let chatid = ''
+  let chatid = useSelector(selectChatId)
   const productsArr = Object.values(products)
   const cartTotal = productsArr.reduce((a, b) => a + parseInt(b['prices']), 0)
 
@@ -48,7 +54,7 @@ export default function CartPage({ products }) {
     if (chatid !== '') {
       fetchData()
     }
-  })
+  }, [chatid])
 
   const setChatData = chatData => {
     let formattedProducts = {}

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useTranslation } from 'react-i18next'
+
 // import OptionsAndInfoBox from '../components/optionsAndInfoBox'
 import ProductCard from './product-card'
-import ScrollDownIcon from '../images/svg/scroll-down'
-import '../styles/components/_suggested-products.scss'
+// import ScrollDownIcon from '../images/svg/scroll-down'
 import configure from '../config.js'
-import axios from 'axios'
+import '../styles/components/_suggested-products.scss'
 
 export default function Products(props) {
+  const { t } = useTranslation()
   const productType = props.productType
   const [allProducts, setAllProducts] = useState([])
 
@@ -44,7 +47,16 @@ export default function Products(props) {
         </div>
 
         <div className='scroll-down'>
-          <ScrollDownIcon />
+          {/* <ScrollDownIcon /> */}
+          <div className='outer-border'>
+            <div className='inner-space'>
+              <div className='inner-bg'>
+                <div className='core'>
+                  <span className='text'>{t('Scroll down')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ import {
   selectActiveInfoBox,
 } from '../store/activeInfoBoxSlice'
 import { selectProducts } from '../store/cartSlice'
-import { updateLog } from '../store/chatLogSlice'
+import { updateLog, setChatId } from '../store/chatLogSlice'
 import { updateActiveVideo } from '../store/activeVideoSlice'
 
 export default function HomePage() {
@@ -50,6 +50,7 @@ export default function HomePage() {
 
       if (id === '7aeb63aa-519b-4063-a48a-97d5124e8ca3') {
         // greetings
+        dispatch(setChatId(newMessage.chat_id))
         dispatch(updateActiveInfoBox('brandSelect'))
         dispatch(updateActiveVideo('pointLeft'))
       } else if (id === '3cd847f1-40fa-4c70-b187-273b0a604989') {

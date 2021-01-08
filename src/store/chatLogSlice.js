@@ -6,6 +6,7 @@ export const chatLogSlice = createSlice({
     lastMessage: {},
     allMessages: [],
     formattedChatLog: [],
+    chatId: '',
   },
   reducers: {
     updateLog: (state, action) => {
@@ -18,6 +19,9 @@ export const chatLogSlice = createSlice({
     updateFormattedChatLog: (state, action) => {
       state.formattedChatLog = action.payload
     },
+    setChatId: (state, action) => {
+      state.chatId = action.payload
+    },
     clearLog: state => {
       state.value = []
     },
@@ -27,6 +31,7 @@ export const chatLogSlice = createSlice({
 export const {
   updateLog,
   updateFormattedChatLog,
+  setChatId,
   clearLog,
 } = chatLogSlice.actions
 
@@ -34,15 +39,16 @@ export const {
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
-export const getFormattedChatLog = chatId => dispatch => {
-  // data fetching work
-  // then dispatch
-  // dispatch(updateFormattedChatLog())
-}
+// export const getFormattedChatLog = chatId => dispatch => {
+// data fetching work
+// then dispatch
+// dispatch(updateFormattedChatLog())
+// }
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.chatLog.value)`
+export const selectChatId = state => state.chatLog.chatId
 export const selectLastMessage = state => state.chatLog.lastMessage
 export const selectAllMessages = state => state.chatLog.allMessages
 export const selectFormattedChatLog = state => state.chatLog.formattedChatLog
