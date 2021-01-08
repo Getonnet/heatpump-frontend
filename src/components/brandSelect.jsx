@@ -1,15 +1,18 @@
 import React from 'react'
-import BrandLogosIcon from '../images/svg/brandLogosIcon'
-import '../styles/components/_brand-select.scss'
-import DaikinLogo from '../images/brand-logos/daikin.png'
-import GreeLogo from '../images/brand-logos/gree.png'
-import NovapLogo from '../images/brand-logos/novap.png'
 import { useDispatch } from 'react-redux'
 import { clearActiveInfoBox } from '../store/activeInfoBoxSlice'
 
+import '../styles/components/_brand-select.scss'
+
+import LogoNew from '../images/svg/newLogo'
+import DaikinLogo from '../images/brand-logos/daikin.png'
+import GreeLogo from '../images/brand-logos/gree.png'
+import NovapLogo from '../images/brand-logos/novap.png'
+// import BrandLogosIcon from '../images/svg/brandLogosIcon'
+
 export default function BrandsSelect() {
   const dispatch = useDispatch()
-  
+
   const updateSelectedBrand = () => {
     dispatch(clearActiveInfoBox())
   }
@@ -20,7 +23,7 @@ export default function BrandsSelect() {
         <div className='brand-select-menu'>
           <div className='bg-circle' />
           <div className='main-brand-logo'>
-            <BrandLogosIcon />
+            <LogoNew />
           </div>
 
           <div className='brand-logos-wrap'>

@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react'
 
-import Products from './components/products'
-import BrandsSelect from './components/brandSelect'
-import GDPRNotice from './components/gdprNotice'
-import InfoTextBox1 from './components/infoTextBox1'
-import CartPage from './pages/cartpage'
+import Products from '../components/products'
+import BrandsSelect from '../components/brandSelect'
+import GDPRNotice from '../components/gdprNotice'
+import InfoTextBox1 from '../components/infoTextBox1'
+import CartPage from './cartpage'
+
+import '../styles/pages/_home.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
 import {
   updateActiveInfoBox,
   selectActiveInfoBox,
-} from './store/activeInfoBoxSlice'
-import { selectProducts } from './store/cartSlice'
-import { updateLog } from './store/chatLogSlice'
-import { updateActiveVideo } from './store/activeVideoSlice'
+} from '../store/activeInfoBoxSlice'
+import { selectProducts } from '../store/cartSlice'
+import { updateLog } from '../store/chatLogSlice'
+import { updateActiveVideo } from '../store/activeVideoSlice'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -40,12 +42,12 @@ export default function HomePage() {
       // set new last message if 'message' property found
       setLastTwoMessages(message)
 
-      console.log(newMessage)
+      // console.log(newMessage)
       setLastChatLog(newMessage)
       dispatch(updateLog(newMessage))
 
-      console.log('second last message is: -- :')
-      console.log(lastTwoMessagesArr)
+      // console.log('second last message is: -- :')
+      // console.log(lastTwoMessagesArr)
 
       if (id === '7aeb63aa-519b-4063-a48a-97d5124e8ca3') {
         // greetings
@@ -120,6 +122,11 @@ export default function HomePage() {
     script.setAttribute('data-shadow-dom', '1')
     script.setAttribute('data-bot-key', 'e77a739f-9ac2-4707-8c4c-30ae6b77ed4b')
     document.body.appendChild(script)
+
+    // return () => {
+    //   document.body.removeChild(document.getElementById('kindly-chat'))
+    //   document.body.removeChild(document.getElementById('kindly-chat-api'))
+    // }
   })
   // ----- END kindly window event listener
   /**
@@ -128,7 +135,7 @@ export default function HomePage() {
   const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
-    <>
+    <div className='content-box'>
       {activeInfoBox === 'brandSelect' ? (
         <BrandsSelect />
       ) : activeInfoBox === 'GDPR' ? (
@@ -149,6 +156,6 @@ export default function HomePage() {
       ) : (
         ''
       )}
-    </>
+    </div>
   )
 }

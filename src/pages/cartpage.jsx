@@ -22,12 +22,13 @@ const customModalStyles = {
   },
 }
 
-export default function CartPage({ products, chatid }) {
+export default function CartPage({ products }) {
   const { t } = useTranslation()
   // var subtitle
   const [modalIsOpen, setIsOpen] = useState(false)
   const [data, setData] = useState({})
 
+  let chatid = ''
   const productsArr = Object.values(products)
   const cartTotal = productsArr.reduce((a, b) => a + parseInt(b['prices']), 0)
 
@@ -121,10 +122,10 @@ export default function CartPage({ products, chatid }) {
           <table className='cart-table'>
             <thead>
               <tr>
-                <th> { t('Product') } </th>
-                <th> { t('Brief Info') }</th>
-                <th> { t('Quantity') }</th>
-                <th> { t('Price') } </th>
+                <th> {t('Product')} </th>
+                <th> {t('Brief Info')}</th>
+                <th> {t('Quantity')}</th>
+                <th> {t('Price')} </th>
               </tr>
             </thead>
 
@@ -143,7 +144,7 @@ export default function CartPage({ products, chatid }) {
               <tr>
                 <td />
                 <td>
-                  <span className='discount'> { t('Total') } </span>
+                  <span className='discount'> {t('Total')} </span>
                 </td>
                 <td />
                 <td>{cartTotal} kr</td>
@@ -154,7 +155,7 @@ export default function CartPage({ products, chatid }) {
 
         <div className='cart-cta'>
           <button className='btn' onClick={openModal}>
-          { t('Send your request') }
+            {t('Send your request')}
           </button>
         </div>
       </div>
@@ -167,7 +168,7 @@ export default function CartPage({ products, chatid }) {
         ariaHideApp={false}
         contentLabel='Example Modal'>
         <div className='modal-header'>
-          <h2> { t('Contact Form') } </h2>
+          <h2> {t('Contact Form')} </h2>
           <span onClick={closeModal}>
             <ModalCloseIcon />
           </span>
@@ -181,7 +182,7 @@ export default function CartPage({ products, chatid }) {
 
           <div className='left'>
             <div className='form-field'>
-              <label htmlFor='name'> { t('Your Name') } </label>
+              <label htmlFor='name'> {t('Your Name')} </label>
               <div className='input-icon'>
                 <div className='icon'>
                   <InputNameIcon />
@@ -200,7 +201,7 @@ export default function CartPage({ products, chatid }) {
             </div>
 
             <div className='form-field'>
-              <label htmlFor='email'> { t('Your Email') } </label>
+              <label htmlFor='email'> {t('Your Email')} </label>
               <div className='input-icon'>
                 <div className='icon'>
                   <InputEmailIcon />
@@ -218,7 +219,7 @@ export default function CartPage({ products, chatid }) {
               </div>
             </div>
             <div className='form-field'>
-              <label htmlFor='phone'> { t('Phone No.') }</label>
+              <label htmlFor='phone'> {t('Phone No.')}</label>
               <div className='input-icon'>
                 <div className='icon'>
                   <InputPhoneIcon />
@@ -239,7 +240,7 @@ export default function CartPage({ products, chatid }) {
 
           <div className='right'>
             <div className='form-field'>
-              <label htmlFor='message'> { t('Address') }</label>
+              <label htmlFor='message'> {t('Address')}</label>
               <textarea
                 id='message'
                 name='address'
@@ -252,7 +253,7 @@ export default function CartPage({ products, chatid }) {
 
           <div className='bottom'>
             <button onClick={handleSubmit} type='submit' className='btn'>
-            { t('Send Request') }
+              {t('Send Request')}
               {/* Send Request */}
             </button>
           </div>
