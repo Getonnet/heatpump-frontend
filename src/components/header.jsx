@@ -29,9 +29,9 @@ export default function Header() {
               </Link>
             </div>
             <div className='menu-toggle'>
-              <Link to={'/faq'}>
-                <FAQIcon />
-              </Link>
+              {/* <Link to={'/faq'}> */}
+              <FAQIcon onClick={() => (window.location.href = '/faq')} />
+              {/* </Link> */}
             </div>
             <div className='header-language'>
               <Language />

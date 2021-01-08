@@ -20,7 +20,6 @@ import { updateActiveVideo } from '../store/activeVideoSlice'
 export default function HomePage() {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-
   /**
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
