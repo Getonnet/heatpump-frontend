@@ -1,6 +1,10 @@
 .card--product {
   z-index: 99;
-  max-width: 350px !important;
+  max-width: 370px !important;
+
+  &.recommended {
+    background-color: rgba(49, 178, 248, 0.1);
+  }
 
   .product-image {
     background: #19c3ff;
@@ -53,6 +57,7 @@
     .btn {
       padding: 10px 14px;
       font-size: 14px;
+      margin-right: 20px;
     }
   }
 

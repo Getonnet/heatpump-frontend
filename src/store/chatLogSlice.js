@@ -7,6 +7,8 @@ export const chatLogSlice = createSlice({
     allMessages: [],
     formattedChatLog: [],
     chatId: '',
+    areaToHeat: 0,
+    isIsolated: '',
   },
   reducers: {
     updateLog: (state, action) => {
@@ -22,6 +24,12 @@ export const chatLogSlice = createSlice({
     setChatId: (state, action) => {
       state.chatId = action.payload
     },
+    setAreaToHeat: (state, action) => {
+      state.areaToHeat = action.payload
+    },
+    setIsIsolated: (state, action) => {
+      state.isIsolated = action.payload
+    },
     clearLog: state => {
       state.value = []
     },
@@ -33,6 +41,8 @@ export const {
   updateFormattedChatLog,
   setChatId,
   clearLog,
+  setAreaToHeat,
+  setIsIsolated,
 } = chatLogSlice.actions
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -49,6 +59,8 @@ export const {
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.chatLog.value)`
 export const selectChatId = state => state.chatLog.chatId
+export const selectAreaToHeat = state => state.chatLog.areaToHeat
+export const selectIsIsolated = state => state.chatLog.isIsolated
 export const selectLastMessage = state => state.chatLog.lastMessage
 export const selectAllMessages = state => state.chatLog.allMessages
 export const selectFormattedChatLog = state => state.chatLog.formattedChatLog

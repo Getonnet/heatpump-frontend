@@ -37,8 +37,9 @@ export const allVideos = {
 
   nodding: {
     name: 'nodding',
-    src: '/videos/04_Nodding_480.mp4',
+    src: '/videos/04_Nodding-twice_480.mp4',
     duration: 7.72,
+    // src: '/videos/04_Nodding_480.mp4',
   },
 
   freezing: {

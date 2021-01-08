@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import '../styles/components/_product-card.scss'
-import MinusIcon from '../images/svg/minus'
-import PlusIcon from '../images/svg/plus'
+import { useTranslation } from 'react-i18next'
 import {
   addSelectedProducts,
   removeSelectedProducts,
   updateProductQuantity,
   selectProducts,
 } from '../store/cartSlice'
-// import HeatPumpImage from '../images/svg/heatpump-img'
-import { useTranslation } from 'react-i18next'
+
+import '../styles/components/_product-card.scss'
+import '../styles/components/_badge.scss'
+
+import MinusIcon from '../images/svg/minus'
+import PlusIcon from '../images/svg/plus'
 
 export default function ProductCard({
   products,
@@ -20,12 +22,13 @@ export default function ProductCard({
   img,
   descriptions,
   productType,
+  recommended,
 }) {
   const { t } = useTranslation()
   const [quantity, setQuantity] = useState(1)
-  // const [selectedProducts, setSelectedProducts] = useState([])
   const selectedProducts = useSelector(selectProducts)
   const dispatch = useDispatch()
+  // const [selectedProducts, setSelectedProducts] = useState([])
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1)
@@ -45,6 +48,7 @@ export default function ProductCard({
     let name = data.name
     let img = data.img
     let productType = data.producttype
+    let recommended = data.is_recommend
     // let currentCartItems = ([...selectedProducts])
 
     if (parseInt(quantity) !== 0) {
@@ -69,6 +73,7 @@ export default function ProductCard({
               names: name,
               photo: img,
               productType,
+              recommended,
             },
           })
         )
@@ -87,7 +92,20 @@ export default function ProductCard({
   // ----------- end cart calculations
 
   return (
-    <div className='card card--product'>
+    <div
+      className={
+        recommended ? 'card card--product recommended ' : 'card card--product'
+      }>
+      {recommended && (
+        <div className='neon-badge'>
+          <span />
+          <span />
+          <span />
+          <span />
+          {t('we recommend')}
+        </div>
+      )}
+
       <div className='product-image'>
         <img src={img} alt={name} />
       </div>
@@ -106,7 +124,7 @@ export default function ProductCard({
             data-qty={quantity}
             data-producttype={productType}
             className='add-to-cart btn'>
-              { t('Addtocart') }
+            {t('Addtocart')}
             {/* Add to cart */}
           </button>
         </div>

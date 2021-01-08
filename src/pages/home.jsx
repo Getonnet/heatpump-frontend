@@ -14,7 +14,12 @@ import {
   selectActiveInfoBox,
 } from '../store/activeInfoBoxSlice'
 import { selectProducts } from '../store/cartSlice'
-import { updateLog, setChatId } from '../store/chatLogSlice'
+import {
+  updateLog,
+  setChatId,
+  setIsIsolated,
+  setAreaToHeat,
+} from '../store/chatLogSlice'
 import { updateActiveVideo } from '../store/activeVideoSlice'
 
 export default function HomePage() {
@@ -24,7 +29,7 @@ export default function HomePage() {
    * Kindly window event listener
    * @type {{onMessage: Window.kindlyOptions.onMessage}}
    */
-  const [lastChatLog, setLastChatLog] = useState({})
+  // const [lastChatLog, setLastChatLog] = useState({})
   let lastTwoMessagesArr = []
 
   const setLastTwoMessages = message => {
@@ -40,11 +45,9 @@ export default function HomePage() {
       let message = newMessage.message || ''
       // set new last message if 'message' property found
       setLastTwoMessages(message)
-
-      // console.log(newMessage)
-      setLastChatLog(newMessage)
+      console.log(newMessage)
+      // setLastChatLog(newMessage)
       dispatch(updateLog(newMessage))
-
       // console.log('second last message is: -- :')
       // console.log(lastTwoMessagesArr)
 
@@ -60,18 +63,23 @@ export default function HomePage() {
       } else if (id === 'ef0c6925-4a71-49ca-a7f2-92914f167cec') {
         // name, email, phone, address collected, now asked size of apartment
         dispatch(updateActiveVideo('nodding'))
+      } else if (id === '1dac94f9-72ff-4510-8f0c-9cb355ae3d1f') {
+        // set area to heat
+        dispatch(setAreaToHeat(lastTwoMessagesArr[0]))
       } else if (
         id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
         lastTwoMessagesArr[0] === 'Dårlig'
       ) {
         // is you hour isolated: bad
         dispatch(updateActiveVideo('freezing'))
+        dispatch(setIsIsolated('Dårlig'))
       } else if (
         id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
         lastTwoMessagesArr[0] === 'Godt'
       ) {
         // is you hour isolated: well
         dispatch(updateActiveVideo('thumbsUp'))
+        dispatch(setIsIsolated('Godt'))
       } else if (
         id === '88ee375d-fbe5-49bb-865d-46113d9d87dc' ||
         id === '11c125a9-bde0-4b87-9bf4-4ffb028d74f2'
@@ -147,12 +155,7 @@ export default function HomePage() {
       ) : activeInfoBox === 'suggested-products' ? (
         <Products productType={'suggested-products'} />
       ) : activeInfoBox === 'cart' ? (
-        <CartPage
-          chatid={
-            Object.keys(lastChatLog).length > 0 ? lastChatLog.chat_id : ''
-          }
-          products={products}
-        />
+        <CartPage products={products} />
       ) : (
         ''
       )}

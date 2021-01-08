@@ -56,17 +56,29 @@
   top: -50px;
   // right: -90px;
 
-  .outer-border {
+  .scroll-down-wrap {
     width: 120px;
     height: 120px;
-    border: 1px dashed rgba(25, 195, 255, 0.3);
-    box-sizing: border-box;
-    border-radius: 90px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    position: relative;
+  }
+
+  .outer-border {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed rgba(25, 195, 255, 0.3);
+    box-sizing: border-box;
+    border-radius: 90px;
+    position: absolute;
+
+    animation-name: spin;
+    animation-duration: 20000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: center;
   }
 
   .inner-space {
@@ -86,39 +98,35 @@
     height: 100px;
     background: rgba(#19c3ff, 0.1);
     border-radius: 50px;
+    z-index: 10;
+  }
+
+  .core {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #19c3ff;
+    border-radius: 50px;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    z-index: 10;
+    z-index: 15;
+  }
 
-    .core {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      background: #19c3ff;
-      border-radius: 50px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      z-index: 15;
-    }
-
-    .text {
-      width: 50px;
-      height: 34px;
-      font-family: inherit;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 16px;
-      text-align: center;
-      letter-spacing: 0.1em;
-      color: #ffffff;
-      z-index: 20;
-    }
+  .text {
+    width: 50px;
+    height: 34px;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    z-index: 20;
   }
 
   svg {
