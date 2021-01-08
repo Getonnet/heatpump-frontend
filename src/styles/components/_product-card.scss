@@ -1,6 +1,7 @@
 .card--product {
   z-index: 99;
   max-width: 370px !important;
+  position: relative;
 
   &.recommended {
     background-color: rgba(49, 178, 248, 0.1);

@@ -1,15 +1,17 @@
 import React from 'react'
-import logo from '../images/logo.png'
-// import MenuToggleIcon from '../images/svg/menu-toggle'
-import FAQIcon from '../images/svg/faq'
-import '../styles/components/_header.scss'
 import { Link } from 'react-router-dom'
-import Cart from './cart'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
+
 import Language from '../components/languages'
+import Cart from './cart'
+import logo from '../images/logo.png'
+import FAQIcon from '../images/svg/faq'
+// import MenuToggleIcon from '../images/svg/menu-toggle'
+
+import '../styles/components/_header.scss'
 
 export default function Header() {
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
   return (
     <header className='App-header'>
       <div className='container'>
@@ -24,9 +26,7 @@ export default function Header() {
 
           <div className='right'>
             <div className='header-cart'>
-              <Link to={'/cart'}>
-                <Cart />
-              </Link>
+              <Cart />
             </div>
             <div className='menu-toggle'>
               {/* <Link to={'/faq'}> */}
