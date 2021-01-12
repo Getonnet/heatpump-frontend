@@ -66,6 +66,9 @@ export default function HomePage() {
       } else if (id === '79ef167c-8dcd-4162-8637-af09a54235cc') {
         // set area to heat
         dispatch(setAreaToHeat(lastTwoMessagesArr[0]))
+        // if (lastTwoMessagesArr[0]) {
+        //   window.kindlyChat.trigger('7d2f38d8-b0c4-4b03-8a3a-34a9f304fc66')
+        // }
       } else if (
         id === '5950c71d-6cf2-47b2-86e0-15824d7aeace' &&
         lastTwoMessagesArr[0] === 'Dårlig'

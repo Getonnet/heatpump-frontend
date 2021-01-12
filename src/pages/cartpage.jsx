@@ -58,7 +58,7 @@ export default function CartPage({ products }) {
 
   const setChatData = chatData => {
     let formattedProducts = {}
-    Object.values(products).map(row => (formattedProducts[row.id] = row.qty)) //order products list
+    productsArr.map(row => (formattedProducts[row.id] = row.qty)) //order products list
 
     setData(prevState => ({
       ...prevState,
