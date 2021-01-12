@@ -1,3 +1,4 @@
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -15,7 +16,9 @@ function App() {
   const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
-    <div className='App' style={{backgroundImage: `url('/images/home-bg.png')`}}>
+    <div
+      className='App'
+      style={{ backgroundImage: `url('/images/home-bg.png')` }}>
       <Router>
         <Header />
         <Switch>

@@ -51,37 +51,37 @@ export default function HomePage() {
       // console.log('second last message is: -- :')
       // console.log(lastTwoMessagesArr)
 
-      if (id === '950fdda2-c20c-4e40-95ca-8dbfb6f5740a') {
+      if (id === '7aeb63aa-519b-4063-a48a-97d5124e8ca3') {
         // greetings
         dispatch(setChatId(newMessage.chat_id))
         dispatch(updateActiveInfoBox('brandSelect'))
         dispatch(updateActiveVideo('pointLeft'))
-      } else if (id === '9604c784-f2d0-4422-8ab5-768a2626b21c') {
+      } else if (id === '3cd847f1-40fa-4c70-b187-273b0a604989') {
         // second step show gdpr
         dispatch(updateActiveInfoBox('GDPR'))
         dispatch(updateActiveVideo('pointLeft'))
-      } else if (id === '3d2c41ac-8564-469d-a914-6218178a5e83') {
+      } else if (id === 'ef0c6925-4a71-49ca-a7f2-92914f167cec') {
         // name, email, phone, address collected, now asked size of apartment
         dispatch(updateActiveVideo('nodding'))
-      } else if (id === '79ef167c-8dcd-4162-8637-af09a54235cc') {
+      } else if (id === '1dac94f9-72ff-4510-8f0c-9cb355ae3d1f') {
         // set area to heat
         dispatch(setAreaToHeat(lastTwoMessagesArr[0]))
       } else if (
-        id === '5950c71d-6cf2-47b2-86e0-15824d7aeace' &&
+        id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
         lastTwoMessagesArr[0] === 'Dårlig'
       ) {
         // is you hour isolated: bad
         dispatch(updateActiveVideo('freezing'))
         dispatch(setIsIsolated('Dårlig'))
       } else if (
-        id === '5950c71d-6cf2-47b2-86e0-15824d7aeace' &&
+        id === 'ec951d8f-9caf-42db-b87e-5584b59bc8ca' &&
         lastTwoMessagesArr[0] === 'Godt'
       ) {
         // is you hour isolated: well
         dispatch(updateActiveVideo('thumbsUp'))
         dispatch(setIsIsolated('Godt'))
       } else if (
-        id === '0d9aeb18-cbde-43a2-9e6a-01d47dc6f91d' ||
+        id === '88ee375d-fbe5-49bb-865d-46113d9d87dc' ||
         id === '11c125a9-bde0-4b87-9bf4-4ffb028d74f2'
       ) {
         // see products triggered
@@ -89,7 +89,7 @@ export default function HomePage() {
         // change his order after all the steps taken first time
         dispatch(updateActiveInfoBox('products'))
         dispatch(updateActiveVideo('pointLeft'))
-      } else if (id === 'd3af4dee-79a0-4af2-92fc-bf17e6271d29') {
+      } else if (id === '5b44ef0f-6d41-454b-a5a7-9f6d8cc3c67c') {
         // product selected
         dispatch(updateActiveVideo('thumbsUp'))
         dispatch(updateActiveInfoBox(''))
@@ -97,7 +97,7 @@ export default function HomePage() {
         // moving on after reading more avout product
         dispatch(updateActiveVideo('nodding'))
       } else if (
-        id === 'e43c72be-a268-4797-adec-5df072eab6a7' ||
+        id === 'b6eef6d9-1f0d-445d-a364-148fe89d8600' ||
         id === '41ffd8bc-88ac-48d8-8576-be248fba4a1c'
       ) {
         // suggested products
@@ -106,15 +106,15 @@ export default function HomePage() {
         dispatch(updateActiveInfoBox('suggested-products'))
         dispatch(updateActiveVideo('pointLeft'))
       } else if (
-        id === '2229e63e-d92b-415c-89cf-347bc0d13e84' ||
+        id === 'bb30d142-7dc3-4efd-98fb-0b7abdbb388a' ||
         id === 'a6b801ea-7ceb-456a-a7bc-e68a0dcd46ce' ||
         id === '6eb732d0-efae-4a82-aeeb-2ffd6d61b62f'
       ) {
         // confirmation of all info collected, so show cart
         // second id 'a6b.........' is after user decides to reslect something
         dispatch(updateActiveInfoBox('cart'))
-      } else if (id === '39d52977-54b8-4602-8e51-e9f907944fcb') {
-        // user decides to make a change, and list of all changeable option appears
+      } else if (id === '3dd3b9ff-dbbf-4d41-8efd-e24a28638114') {
+        // user decides to make a change, and list of all chanage able option appears
         dispatch(updateActiveInfoBox(''))
         dispatch(updateActiveVideo('greet'))
       }
@@ -123,6 +123,15 @@ export default function HomePage() {
 
   // init kindly chat
   useEffect(() => {
+    /*---- old chat bot -----*/
+    // let script = document.createElement('script')
+    // script.src = 'https://chat.kindlycdn.com/kindly-chat.js'
+    // script.async = true
+    // script.id = 'kindly-chat'
+    // script.setAttribute('data-shadow-dom', '1')
+    // script.setAttribute('data-bot-key', 'e77a739f-9ac2-4707-8c4c-30ae6b77ed4b')
+    // document.body.appendChild(script)
+
     /*---- new chat bot -----*/
     let script = document.createElement('script')
     script.src = 'https://chat.kindlycdn.com/kindly-chat.js'

@@ -2,7 +2,8 @@ const configure = {
   API_URL: 'https://hit.getonnet.dev/api/',
   // API_URL: 'http://127.0.0.1:8000/api/',
   kindly_api: 'https://bot.kindly.ai/api/v1/chats/',
-  token: 'FZXiMOR9pproAs0w4KpYrmA1yX7_t0RzQ9Pa9cSZQq4NKl3xoQoWWfsCnopWSZp6',
+  // token: 'FZXiMOR9pproAs0w4KpYrmA1yX7_t0RzQ9Pa9cSZQq4NKl3xoQoWWfsCnopWSZp6', // old chat token
+  token: 'sqRpLcQL33Yu2Bhj0eoI_4vPyd1yk5M-1f_-IQzWsH0O7xdjtQkN3sDbT00LoSoB',
 }
 
 export default configure
@@ -48,8 +49,3 @@ export const allVideos = {
     duration: 3.8,
   },
 }
-
-// export const chatExchangeId = {
-//   greet: '7aeb63aa-519b-4063-a48a-97d5124e8ca3',
-//   two: '',
-// }
