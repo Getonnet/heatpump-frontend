@@ -12,6 +12,7 @@ import { initReactI18next } from 'react-i18next'
 
 import common_en from './locales/en/translation.json'
 import common_nor from './locales/nor/translation.json'
+import { BrowserRouter } from 'react-router-dom'
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -35,7 +36,7 @@ i18n
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {window.innerWidth < 1000 ? <MobileUsersNotice /> : <App />}
+      {window.innerWidth < 1000 ? <MobileUsersNotice /> : <BrowserRouter ><App /></BrowserRouter>}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -10,8 +10,12 @@ import FAQIcon from '../images/svg/faq'
 
 import '../styles/components/_header.scss'
 
+
+
 export default function Header() {
   // const { t } = useTranslation()
+
+
   return (
     <header className='App-header'>
       <div className='container'>
@@ -29,9 +33,9 @@ export default function Header() {
               <Cart />
             </div>
             <div className='menu-toggle'>
-              {/* <Link to={'/faq'}> */}
-              <FAQIcon onClick={() => (window.location.href = '/faq')} />
-              {/* </Link> */}
+              <a href='/faq'>
+               <FAQIcon/>
+              </a>
             </div>
             <div className='header-language'>
               <Language />

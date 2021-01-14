@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react'
 
 export default function FAQPage() {
+
+  window.kindlyOptions = {
+    onMessage: (newMessage, chatLog) => {
+      console.log(newMessage);
+    }
+  }
+
   useEffect(() => {
     let script = document.createElement('script')
     script.src = 'https://chat.kindlycdn.com/kindly-chat.js'
@@ -17,7 +24,7 @@ export default function FAQPage() {
   })
 
   return (
-    <div className='container' style={{ display: 'none' }}>
+    <div className='container' style={{ display: 'block' }}>
       FAQ Page
     </div>
   )

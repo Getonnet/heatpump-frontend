@@ -1,5 +1,5 @@
 const configure = {
-	API_URL: 'http://admin.xn--varmepumperdgiveren-bxb.no/api/',
+	API_URL: 'https://admin.xn--varmepumperdgiveren-bxb.no/api/',
   //API_URL: 'https://hit.getonnet.dev/api/',
   // API_URL: 'http://127.0.0.1:8000/api/',
   kindly_api: 'https://bot.kindly.ai/api/v1/chats/',
