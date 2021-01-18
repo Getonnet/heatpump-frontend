@@ -59,6 +59,10 @@
       padding: 10px 14px;
       font-size: 14px;
       margin-right: 20px;
+      transition: all .3s ease-in-out;
+      &:hover {
+        background-color: #2593ba;
+      }
     }
   }
 
@@ -114,8 +118,9 @@
 
 .moneySection{
   .money {
-    padding: 10px;
+    padding: 10px 15px;
     background: rgba(#19C3FF, 0.1);
     border-radius: 20px;
+    color: #19C3FF;
   }
 }
