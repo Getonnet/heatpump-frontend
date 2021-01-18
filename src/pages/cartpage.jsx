@@ -31,35 +31,33 @@ const customModalStyles = {
 export default function CartPage({ products }) {
   const { t } = useTranslation()
   // var subtitle
+  let chatId = useSelector(selectChatId)
   const [modalIsOpen, setIsOpen] = useState(false)
-  const [data, setData] = useState({})
+  const [data, setData] = useState({uniq_session: chatId})
 
-  let chatid = useSelector(selectChatId)
   const productsArr = Object.values(products)
   const cartTotal = productsArr.reduce((a, b) => a + parseInt(b['prices']), 0)
 
   useEffect(() => {
-    async function fetchData() {
-      axios
-        .get(configure.kindly_api + chatid, {
-          headers: {
-            Authorization: `Bearer ${configure.token}`,
-          },
-        })
-        .then(response => {
-          let res_data = response.data
-          setChatData(res_data.chat.context)
-        })
-    }
-    if (chatid !== '') {
+    if (chatId !== '') {
       fetchData()
     }
-  }, [chatid])
+  }, [chatId])
+
+  const fetchData = async () => {
+    await axios.get(configure.kindly_api + chatId, {
+         headers: {
+           Authorization: `Bearer ${configure.token}`,
+         },
+       }).then(response => {
+         let res_data = response.data;
+         setChatData(res_data.chat.context);
+       })
+   }
 
   const setChatData = chatData => {
     let formattedProducts = {}
     productsArr.map(row => (formattedProducts[row.id] = row.qty)) //order products list
-
     setData(prevState => ({
       ...prevState,
       name: chatData.navn || '',
@@ -70,7 +68,7 @@ export default function CartPage({ products }) {
       area_info: chatData.kvadratmeter || '',
       wall_type: chatData.veggtype || '',
       insulated: chatData.isolert || '',
-      uniq_session: chatid || '',
+      uniq_session: chatId || '',
       items: formattedProducts,
     }))
   }
@@ -97,7 +95,7 @@ export default function CartPage({ products }) {
     // console.log(data)
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     let submit_config = {
@@ -110,10 +108,10 @@ export default function CartPage({ products }) {
       data: JSON.stringify(data),
     }
 
-    axios(submit_config)
+    await axios(submit_config)
       .then(function (response) {
         if (response.status === 200) {
-          window.location.href = '/' // redirect to home page
+          window.location.href = '/thanks' // redirect to thanks page
         }
       })
       .catch(function (error) {
@@ -187,75 +185,75 @@ export default function CartPage({ products }) {
           <input type='hidden' name='wall_type' value={data.wall_type || ''} />
 
           <div className='left'>
-            <div className='form-field'>
-              <label htmlFor='name'> {t('Your Name')} </label>
-              <div className='input-icon'>
-                <div className='icon'>
-                  <InputNameIcon />
-                </div>
-                <div className='input'>
-                  <input
-                    type='text'
-                    id='name'
-                    name='name'
-                    onChange={handleChange}
-                    value={data.name || ''}
-                    placeholder='name'
-                  />
-                </div>
-              </div>
-            </div>
+                        <div className='form-field'>
+                        <label htmlFor='name'> {t('Your Name')} </label>
+                        <div className='input-icon'>
+                            <div className='icon'>
+                            <InputNameIcon />
+                            </div>
+                            <div className='input'>
+                            <input
+                                type='text'
+                                id='name'
+                                name='name'
+                                onChange={handleChange}
+                                value={data.name || ''}
+                                placeholder={t('Your Name')}
+                            />
+                            </div>
+                        </div>
+                        </div>
 
-            <div className='form-field'>
-              <label htmlFor='email'> {t('Your Email')} </label>
-              <div className='input-icon'>
-                <div className='icon'>
-                  <InputEmailIcon />
-                </div>
-                <div className='input'>
-                  <input
-                    type='text'
-                    id='email'
-                    name='email'
-                    onChange={handleChange}
-                    value={data.email || ''}
-                    placeholder='email'
-                  />
-                </div>
-              </div>
-            </div>
-            <div className='form-field'>
-              <label htmlFor='phone'> {t('Phone No.')}</label>
-              <div className='input-icon'>
-                <div className='icon'>
-                  <InputPhoneIcon />
-                </div>
-                <div className='input'>
-                  <input
-                    type='text'
-                    id='phone'
-                    name='contact'
-                    onChange={handleChange}
-                    value={data.contact || ''}
-                    placeholder='phone'
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                        <div className='form-field'>
+                        <label htmlFor='email'> {t('Your Email')} </label>
+                        <div className='input-icon'>
+                            <div className='icon'>
+                            <InputEmailIcon />
+                            </div>
+                            <div className='input'>
+                            <input
+                                type='text'
+                                id='email'
+                                name='email'
+                                onChange={handleChange}
+                                value={data.email || ''}
+                                placeholder={t('Your Email')}
+                            />
+                            </div>
+                        </div>
+                        </div>
+                        <div className='form-field'>
+                        <label htmlFor='phone'> {t('Phone')}</label>
+                        <div className='input-icon'>
+                            <div className='icon'>
+                            <InputPhoneIcon />
+                            </div>
+                            <div className='input'>
+                            <input
+                                type='text'
+                                id='phone'
+                                name='contact'
+                                onChange={handleChange}
+                                value={data.contact || ''}
+                                placeholder={t('Phone')}
+                            />
+                            </div>
+                        </div>
+                        </div>
+                    </div>
 
-          <div className='right'>
-            <div className='form-field'>
-              <label htmlFor='message'> {t('Address')}</label>
-              <textarea
-                id='message'
-                name='address'
-                onChange={handleChange}
-                value={data.address || ''}
-                rows='100%'
-              />
-            </div>
-          </div>
+                    <div className='right'>
+                        <div className='form-field'>
+                        <label htmlFor='message'> {t('Address')}</label>
+                        <textarea
+                            id='message'
+                            name='address'
+                            onChange={handleChange}
+                            value={data.address || ''}
+                            rows='100%'
+                        />
+                        </div>
+                    </div>
 
           <div className='bottom'>
             <button onClick={handleSubmit} type='submit' className='btn'>

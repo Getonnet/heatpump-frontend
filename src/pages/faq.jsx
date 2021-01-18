@@ -24,7 +24,7 @@ export default function FAQPage() {
   })
 
   return (
-    <div className='container' style={{ display: 'block' }}>
+    <div className='container' style={{ display: 'none' }}>
       FAQ Page
     </div>
   )

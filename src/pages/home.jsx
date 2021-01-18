@@ -133,7 +133,6 @@ export default function HomePage() {
   //   window.kindlyChat.triggerDialogue('7d2f38d8-b0c4-4b03-8a3a-34a9f304fc66');
   // }
 
-  
 
   // init kindly chat
   useEffect(() => {

@@ -10,7 +10,7 @@
     "Send your request": "Send your request",
     "Total": "Total",
     "Address": "Address",
-    "Phone No.": "Phone No.",
+    "Phone": "Phone No.",
     "Your Email": "Your Email",
     "Your Name": "Your Name",
     "Contact Form": "Contact Form",
@@ -21,5 +21,6 @@
     "mobile": "This site is not optimized for mobile devices",
     "larger": "Please visit from a larger screen device",
     "Scroll down": "Scroll down",
-    "we recommend": "We recommend"
+    "we recommend": "We recommend",
+    "thanks": "Our Sales team will be contacted soon..."
 }

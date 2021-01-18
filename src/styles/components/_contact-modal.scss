@@ -40,6 +40,21 @@
   }
 }
 
+.moneySection{
+  position: absolute;
+  left: 0px;
+  top: 5px;
+  .money {
+    padding: 4px 5px 4px 20px;
+    background-color: #EE404A;
+    color: white;
+    border-radius: 40px 0px 0px 0px;
+    opacity: 1;
+  }
+
+}
+
+
 .right {
   height: 100%;
 }

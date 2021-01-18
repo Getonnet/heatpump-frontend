@@ -9,30 +9,30 @@ import InputPhoneIcon from '../images/input-phone-icon'
 import configure from '../config'
 
 function RequestOrder(props) {
+    const chatId = useSelector(selectChatId)
     const { t } = useTranslation()
-    const [data, setData] = useState({})
-    let chatId = useSelector(selectChatId)
-
+    const [data, setData] = useState({uniq_session: chatId})
+    
     useEffect(() => {
-      async function fetchData() {
-        axios
-          .get(configure.kindly_api + chatId, {
-            headers: {
-              Authorization: `Bearer ${configure.token}`,
-            },
-          })
-          .then(response => {
-            let res_data = response.data
-            setChatData(res_data.chat.context)
-          })
-      }
       if (chatId !== '') {
         fetchData()
       }
     }, [chatId])
-  
-    const setChatData = chatData => {
 
+    const fetchData = async () => {
+      await axios.get(configure.kindly_api + chatId, {
+           headers: {
+             Authorization: `Bearer ${configure.token}`,
+           },
+         }).then(response => {
+           let res_data = response.data;
+           setChatData(res_data.chat.context);
+         })
+     }
+
+    const setChatData = chatData => {
+      
+      if(typeof chatData === 'object')
       setData(prevState => ({
         ...prevState,
         name: chatData.navn || '',
@@ -74,7 +74,7 @@ function RequestOrder(props) {
     axios(submit_config)
       .then(function (response) {
         if (response.status === 200) {
-          window.location.href = '/' // redirect to home page
+          window.location.href = '/thanks' // redirect to thanks page
         }
       })
       .catch(function (error) {
@@ -84,8 +84,8 @@ function RequestOrder(props) {
 
     return (
         <div className='cart-page'>
-         <div className='container'>
-            <div className='card card--cart'>
+         <div className={'container'}>
+            <div className={'card card--cart','order_rq'}>
                 <form className='collect-data-form'>
                     <input type='hidden' name='zip_code' value={data.zip_code || ''} />
                     <input type='hidden' name='area_info' value={data.area_info || ''} />
@@ -106,7 +106,7 @@ function RequestOrder(props) {
                                 name='name'
                                 onChange={handleChange}
                                 value={data.name || ''}
-                                placeholder='name'
+                                placeholder={t('Your Name')}
                             />
                             </div>
                         </div>
@@ -125,13 +125,13 @@ function RequestOrder(props) {
                                 name='email'
                                 onChange={handleChange}
                                 value={data.email || ''}
-                                placeholder='email'
+                                placeholder={t('Your Email')}
                             />
                             </div>
                         </div>
                         </div>
                         <div className='form-field'>
-                        <label htmlFor='phone'> {t('Phone No.')}</label>
+                        <label htmlFor='phone'> {t('Phone')}</label>
                         <div className='input-icon'>
                             <div className='icon'>
                             <InputPhoneIcon />
@@ -143,7 +143,7 @@ function RequestOrder(props) {
                                 name='contact'
                                 onChange={handleChange}
                                 value={data.contact || ''}
-                                placeholder='phone'
+                                placeholder={t('Phone')}
                             />
                             </div>
                         </div>

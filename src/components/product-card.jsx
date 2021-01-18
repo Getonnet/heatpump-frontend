@@ -23,7 +23,9 @@ export default function ProductCard({
   descriptions,
   productType,
   recommended,
+  pdfLink
 }) {
+
   const { t } = useTranslation()
   const [quantity, setQuantity] = useState(1)
   const selectedProducts = useSelector(selectProducts)
@@ -107,9 +109,12 @@ export default function ProductCard({
       )}
 
       <div className='product-image'>
-        <img src={img} alt={name} />
+        <a href={pdfLink || '#'} target="_blank">
+          <img src={img} alt={name} />
+        </a>
+        
       </div>
-
+      <div className='moneySection'><b className='money'>{price} kr</b></div>
       <div className='product-category'>{category}</div>
       <div className='product-title'>{name}</div>
       <div className='product-description'>{descriptions}</div>

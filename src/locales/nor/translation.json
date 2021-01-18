@@ -1,7 +1,7 @@
 {
     "Browser": "Nettleseren din støtter ikke formatet.",
     "accept": "Jeg aksepterer",
-    "GDPR":  "Denne informasjonen deles ikke med 3. part og bør kun benyttes i dialog mellom VKSYS og deg som kunde.Samtalen din vil slettes etter 30 dager. Vil du slette den selv kan du bruke tannhjulet nede i høyre hjørne av boblen, og trykke på \"Slett chatloggen.",
+    "GDPR":  "Denne informasjonen deles ikke med 3. part og bør kun benyttes i dialog mellom VKSYS og deg som kunde.Samtalen din vil slettes etter 30 dager. Vil du slette den selv kan du bruke tannhjulet nede i høyre hjørne av boblen, og trykke på.",
     "information":"Denne informasjonen deles ikke med tredjeparter og skal bare brukes i dialog mellom VKSYS og deg som kunde.",
     "collects": "VKSYS samler informasjon som er nødvendig for å sende deg det beste tilbudet.",
     "ask":"Jeg vil nå stille noen spørsmål for å kunne gi råd om hvilke varmepumpemodeller som kan være relevante for deg og hva som vil være riktig kapasitet til varmepumpen.",
@@ -9,8 +9,8 @@
     "Send Request": "Send forespørsel",
     "Send your request": "Send forespørselen din",
     "Total": "Total",
-    "Address": "Address",
-    "Phone No.": "Telefonnr.",
+    "Address": "Adresse",
+    "Phone": "Telefonnr.",
     "Your Email": "Din epost",
     "Your Name": "Navnet ditt",
     "Contact Form": "Kontakt skjema",
@@ -21,5 +21,6 @@
     "mobile": "Dette nettstedet er ikke optimalisert for mobile enheter",
     "larger": "Vennligst besøk fra en større skjerm",
     "Scroll down": "Skroll ned",
-    "we recommend": "anbefalt for deg"
+    "we recommend": "anbefalt for deg",
+    "thanks" : "Vårt salgsteam vil bli kontaktet snart..."
 }

@@ -28,10 +28,14 @@ export default function Products(props) {
         .then(response => {
           console.log(response.data)
           setAllProducts(response.data)
+
+          //console.log(response.data);
+
         })
     }
     fetchProducts()
   }, [productType, size, condition])
+
 
   return (
     <div className='page-home'>
@@ -50,6 +54,7 @@ export default function Products(props) {
                 category={product.category}
                 productType={productType}
                 recommended={product.is_recommend}
+                pdfLink={product.urls}
               />
             ))}
         </div>
