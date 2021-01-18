@@ -1,10 +1,21 @@
 import React from 'react'
 import '../styles/pages/_terms.scss'
+import { useTranslation } from 'react-i18next'
+import LeftArrowIcon from '../images/svg/leftArrow'
+import { Link } from 'react-router-dom'
 
 export default function TermsPage() {
+  const { t } = useTranslation()
+
   return (
     <div className='terms-page'>
       <div className='container'>
+        <div className='go-back'>
+          <Link to={'/'} className='btn'>
+            <LeftArrowIcon />
+            <span className='text'>{t('Go back')}</span>
+          </Link>
+        </div>
         <h1>Betingelser og vilkår</h1>
         <hr style={{ opacity: '0.2' }} />
         <h2>1. Avtalen</h2>

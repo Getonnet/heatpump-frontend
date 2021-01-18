@@ -1,9 +1,36 @@
 .terms-page {
   padding-bottom: 100px;
   padding-top: 40px;
+
   .container {
     max-width: 96%;
     width: 900px;
     margin: 0 auto;
+  }
+
+  .go-back {
+    .btn {
+      display: inline-flex;
+      padding: 10px 15px;
+      background: rgba(#19C3FF, 0.1);
+      border-radius: 20px;
+      color: #19C3FF;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all .3s ease-in-out;
+      &:hover {
+        border: 1px solid #19C3FF;
+      }
+    }
+
+    .text {
+      margin-left: 10px;
+    }
+
+    svg {
+      width: 30px;
+    }
   }
 }
