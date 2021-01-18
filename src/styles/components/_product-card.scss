@@ -113,6 +113,18 @@
       font-size: 16px;
     }
   }
+
+  .remove-link {
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #f73c09;
+    &:hover {
+      color: #cb2e00;
+    }
+  }
 }
 
 

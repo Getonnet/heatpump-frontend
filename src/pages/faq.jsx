@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
+import '../styles/pages/_faq.scss'
 
 export default function FAQPage() {
-
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
-      console.log(newMessage);
-    }
+      console.log(newMessage)
+    },
   }
 
   useEffect(() => {

@@ -16,6 +16,7 @@ import InputEmailIcon from '../images/input-email-icon'
 import InputPhoneIcon from '../images/input-phone-icon'
 
 import configure from '../config'
+import { Link } from 'react-router-dom'
 
 const customModalStyles = {
   content: {
@@ -33,7 +34,7 @@ export default function CartPage({ products }) {
   // var subtitle
   let chatId = useSelector(selectChatId)
   const [modalIsOpen, setIsOpen] = useState(false)
-  const [data, setData] = useState({uniq_session: chatId})
+  const [data, setData] = useState({ uniq_session: chatId })
 
   const productsArr = Object.values(products)
   const cartTotal = productsArr.reduce((a, b) => a + parseInt(b['prices']), 0)
@@ -45,15 +46,17 @@ export default function CartPage({ products }) {
   }, [chatId])
 
   const fetchData = async () => {
-    await axios.get(configure.kindly_api + chatId, {
-         headers: {
-           Authorization: `Bearer ${configure.token}`,
-         },
-       }).then(response => {
-         let res_data = response.data;
-         setChatData(res_data.chat.context);
-       })
-   }
+    await axios
+      .get(configure.kindly_api + chatId, {
+        headers: {
+          Authorization: `Bearer ${configure.token}`,
+        },
+      })
+      .then(response => {
+        let res_data = response.data
+        setChatData(res_data.chat.context)
+      })
+  }
 
   const setChatData = chatData => {
     let formattedProducts = {}
@@ -87,15 +90,13 @@ export default function CartPage({ products }) {
   }
 
   const handleChange = ({ currentTarget: input }) => {
-    // console.log(input.name, input.value)
     setData(prevState => ({
       ...prevState,
       [input.name]: input.value,
     }))
-    // console.log(data)
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
     let submit_config = {
@@ -153,6 +154,12 @@ export default function CartPage({ products }) {
                 <td />
                 <td>{cartTotal} kr</td>
               </tr>
+              {/*link to terms*/}
+              <tr style={{ textAlign: 'center' }} className='terms-row'>
+                <td colSpan={4} style={{ textAlign: 'center' }}>
+                  <Link to='/vilkår'>{t('Standard terms of sale')}</Link>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -185,75 +192,75 @@ export default function CartPage({ products }) {
           <input type='hidden' name='wall_type' value={data.wall_type || ''} />
 
           <div className='left'>
-                        <div className='form-field'>
-                        <label htmlFor='name'> {t('Your Name')} </label>
-                        <div className='input-icon'>
-                            <div className='icon'>
-                            <InputNameIcon />
-                            </div>
-                            <div className='input'>
-                            <input
-                                type='text'
-                                id='name'
-                                name='name'
-                                onChange={handleChange}
-                                value={data.name || ''}
-                                placeholder={t('Your Name')}
-                            />
-                            </div>
-                        </div>
-                        </div>
+            <div className='form-field'>
+              <label htmlFor='name'> {t('Your Name')} </label>
+              <div className='input-icon'>
+                <div className='icon'>
+                  <InputNameIcon />
+                </div>
+                <div className='input'>
+                  <input
+                    type='text'
+                    id='name'
+                    name='name'
+                    onChange={handleChange}
+                    value={data.name || ''}
+                    placeholder={t('Your Name')}
+                  />
+                </div>
+              </div>
+            </div>
 
-                        <div className='form-field'>
-                        <label htmlFor='email'> {t('Your Email')} </label>
-                        <div className='input-icon'>
-                            <div className='icon'>
-                            <InputEmailIcon />
-                            </div>
-                            <div className='input'>
-                            <input
-                                type='text'
-                                id='email'
-                                name='email'
-                                onChange={handleChange}
-                                value={data.email || ''}
-                                placeholder={t('Your Email')}
-                            />
-                            </div>
-                        </div>
-                        </div>
-                        <div className='form-field'>
-                        <label htmlFor='phone'> {t('Phone')}</label>
-                        <div className='input-icon'>
-                            <div className='icon'>
-                            <InputPhoneIcon />
-                            </div>
-                            <div className='input'>
-                            <input
-                                type='text'
-                                id='phone'
-                                name='contact'
-                                onChange={handleChange}
-                                value={data.contact || ''}
-                                placeholder={t('Phone')}
-                            />
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+            <div className='form-field'>
+              <label htmlFor='email'> {t('Your Email')} </label>
+              <div className='input-icon'>
+                <div className='icon'>
+                  <InputEmailIcon />
+                </div>
+                <div className='input'>
+                  <input
+                    type='text'
+                    id='email'
+                    name='email'
+                    onChange={handleChange}
+                    value={data.email || ''}
+                    placeholder={t('Your Email')}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className='form-field'>
+              <label htmlFor='phone'> {t('Phone')}</label>
+              <div className='input-icon'>
+                <div className='icon'>
+                  <InputPhoneIcon />
+                </div>
+                <div className='input'>
+                  <input
+                    type='text'
+                    id='phone'
+                    name='contact'
+                    onChange={handleChange}
+                    value={data.contact || ''}
+                    placeholder={t('Phone')}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                    <div className='right'>
-                        <div className='form-field'>
-                        <label htmlFor='message'> {t('Address')}</label>
-                        <textarea
-                            id='message'
-                            name='address'
-                            onChange={handleChange}
-                            value={data.address || ''}
-                            rows='100%'
-                        />
-                        </div>
-                    </div>
+          <div className='right'>
+            <div className='form-field'>
+              <label htmlFor='message'> {t('Address')}</label>
+              <textarea
+                id='message'
+                name='address'
+                onChange={handleChange}
+                value={data.address || ''}
+                rows='100%'
+              />
+            </div>
+          </div>
 
           <div className='bottom'>
             <button onClick={handleSubmit} type='submit' className='btn'>

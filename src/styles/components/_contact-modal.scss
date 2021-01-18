@@ -120,3 +120,12 @@
     left: 0;
   }
 }
+
+.terms-row {
+  a {
+    color: #19c3ff;
+    &:hover {
+      color: #2f7d99;
+    }
+  }
+}

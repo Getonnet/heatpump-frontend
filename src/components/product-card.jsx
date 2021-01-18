@@ -11,9 +11,6 @@ import {
 import '../styles/components/_product-card.scss'
 import '../styles/components/_badge.scss'
 
-import MinusIcon from '../images/svg/minus'
-import PlusIcon from '../images/svg/plus'
-
 export default function ProductCard({
   products,
   name,
@@ -26,19 +23,10 @@ export default function ProductCard({
   pdfLink,
 }) {
   const { t } = useTranslation()
-  const [quantity, setQuantity] = useState(1)
+  const quantity = 1
+  const [clicked, setClicked] = useState(false)
   const selectedProducts = useSelector(selectProducts)
   const dispatch = useDispatch()
-  // const [selectedProducts, setSelectedProducts] = useState([])
-
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1)
-  }
-
-  const decrementQuantity = () => {
-    if (quantity > 0) setQuantity(quantity - 1)
-    else setQuantity(quantity)
-  }
 
   // ----------- start cart calculations
   const handleChange = e => {
@@ -50,7 +38,8 @@ export default function ProductCard({
     let img = data.img
     let productType = data.producttype
     let recommended = data.is_recommend
-    // let currentCartItems = ([...selectedProducts])
+
+    setClicked(true)
 
     if (parseInt(quantity) !== 0) {
       let i = Object.keys(selectedProducts).findIndex(x => x.id === productID)
@@ -80,17 +69,19 @@ export default function ProductCard({
         )
       }
     } else {
-      // remove product which has quantity of 0
       dispatch(
         removeSelectedProducts({
           id: productID,
         })
       )
-      // dispatch(updateCart(filteredCartItems))
     }
   }
-
   // ----------- end cart calculations
+
+  const removeProductFromCart = () => {
+    dispatch(removeSelectedProducts({ id: products }))
+    setClicked(false)
+  }
 
   return (
     <div
@@ -128,8 +119,12 @@ export default function ProductCard({
             data-qty={quantity}
             data-producttype={productType}
             className='add-to-cart btn'>
-            {t('Addtocart')}
             {/* Add to cart */}
+            {clicked ? (
+              <span>{t('Added!')}</span>
+            ) : (
+              <span>{t('Addtocart')}</span>
+            )}
           </button>
         </div>
 
@@ -138,6 +133,15 @@ export default function ProductCard({
             <b className='money'>{price} kr</b>
           </div>
         </div>
+      </div>
+      <div className='extra'>
+        {clicked ? (
+          <span className='remove-link' onClick={removeProductFromCart}>
+            {t('remove from cart')}
+          </span>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   )
