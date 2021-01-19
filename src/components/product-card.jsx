@@ -137,7 +137,7 @@ export default function ProductCard({
       <div className='extra'>
         {clicked ? (
           <span className='remove-link' onClick={removeProductFromCart}>
-            {t('remove from cart')}
+            {t('Remove from cart')}
           </span>
         ) : (
           ''
