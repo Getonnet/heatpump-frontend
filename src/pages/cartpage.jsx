@@ -166,7 +166,7 @@ export default function CartPage({ products }) {
 
         <div className='cart-cta'>
           <button className='btn' onClick={openModal}>
-            {t('Send your request')}
+            {t('Submit order')}
           </button>
         </div>
       </div>
@@ -264,8 +264,7 @@ export default function CartPage({ products }) {
 
           <div className='bottom'>
             <button onClick={handleSubmit} type='submit' className='btn'>
-              {t('Send Request')}
-              {/* Send Request */}
+              {t('Submit order')}
             </button>
           </div>
         </form>
