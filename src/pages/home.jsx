@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+
+import '../styles/pages/_home.scss'
+
 import Products from '../components/products'
 import BrandsSelect from '../components/brandSelect'
 import GDPRNotice from '../components/gdprNotice'
 import InfoTextBox1 from '../components/infoTextBox1'
 import CartPage from './cartpage'
 import AssistantPerson from '../components/assistant-person'
-import '../styles/pages/_home.scss'
-
-import { useDispatch, useSelector } from 'react-redux'
+import { selectProducts } from '../store/cartSlice'
 import {
   updateActiveInfoBox,
   selectActiveInfoBox,
 } from '../store/activeInfoBoxSlice'
-import { selectProducts } from '../store/cartSlice'
 import {
   updateLog,
   setChatId,
@@ -23,15 +24,10 @@ import {
 import { updateActiveVideo } from '../store/activeVideoSlice'
 
 export default function HomePage() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-  const history = useHistory();
-  /**
-   * Kindly window event listener
-   * @type {{onMessage: Window.kindlyOptions.onMessage}}
-   */
-  // const [lastChatLog, setLastChatLog] = useState({})
-
+  const activeInfoBox = useSelector(selectActiveInfoBox)
   let lastTwoMessagesArr = []
 
   const setLastTwoMessages = message => {
@@ -41,19 +37,17 @@ export default function HomePage() {
     lastTwoMessagesArr.push(message)
   }
 
-  
-
   window.kindlyOptions = {
     onMessage: (newMessage, chatLog) => {
       let id = newMessage.exchange_id
       let message = newMessage.message || ''
       // set new last message if 'message' property found
       setLastTwoMessages(message)
-     // console.log(newMessage)
+      console.log(newMessage)
       // setLastChatLog(newMessage)
       dispatch(updateLog(newMessage))
-      // console.log('second last message is: -- :')
-      // console.log(lastTwoMessagesArr)
+      console.log('second last message is: -- :')
+      console.log(lastTwoMessagesArr)
 
       if (id === '950fdda2-c20c-4e40-95ca-8dbfb6f5740a') {
         // greetings
@@ -69,21 +63,20 @@ export default function HomePage() {
         dispatch(updateActiveVideo('nodding'))
       } else if (id === '79ef167c-8dcd-4162-8637-af09a54235cc') {
         // set area to heat
-        if(Number(lastTwoMessagesArr[0]) >= 250){
+        if (Number(lastTwoMessagesArr[0]) >= 250) {
           //triggerDialogs();
-          history.push('/request-order');
+          history.push('/request-order')
         }
-
       } else if (
         id === '5950c71d-6cf2-47b2-86e0-15824d7aeace' &&
-        lastTwoMessagesArr[0] === 'Dårlig'
+        lastTwoMessagesArr.includes('Dårlig')
       ) {
         // is you hour isolated: bad
         dispatch(updateActiveVideo('freezing'))
         dispatch(setIsIsolated('Dårlig'))
       } else if (
         id === '5950c71d-6cf2-47b2-86e0-15824d7aeace' &&
-        lastTwoMessagesArr[0] === 'Godt'
+        lastTwoMessagesArr.includes('Godt')
       ) {
         // is you hour isolated: well
         dispatch(updateActiveVideo('thumbsUp'))
@@ -133,7 +126,6 @@ export default function HomePage() {
   //   window.kindlyChat.triggerDialogue('7d2f38d8-b0c4-4b03-8a3a-34a9f304fc66');
   // }
 
-
   // init kindly chat
   useEffect(() => {
     /*---- new chat bot -----*/
@@ -147,32 +139,27 @@ export default function HomePage() {
     document.body.appendChild(script)
   })
   // ----- END kindly window event listener
-  /**
-   * infobox visibility logic
-   */
-  const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
     <>
-        <div className='content-box'>
-          {activeInfoBox === 'brandSelect' ? (
-            <BrandsSelect />
-          ) : activeInfoBox === 'GDPR' ? (
-            <GDPRNotice />
-          ) : activeInfoBox === 'infoTextBox1' ? (
-            <InfoTextBox1 />
-          ) : activeInfoBox === 'products' ? (
-            <Products productType={'products'} />
-          ) : activeInfoBox === 'suggested-products' ? (
-            <Products productType={'suggested-products'} />
-          ) : activeInfoBox === 'cart' ? (
-            <CartPage products={products} />
-          ) : (
-            ''
-          )}
-        </div>
-    <AssistantPerson />
+      <div className='content-box'>
+        {activeInfoBox === 'brandSelect' ? (
+          <BrandsSelect />
+        ) : activeInfoBox === 'GDPR' ? (
+          <GDPRNotice />
+        ) : activeInfoBox === 'infoTextBox1' ? (
+          <InfoTextBox1 />
+        ) : activeInfoBox === 'products' ? (
+          <Products productType={'products'} />
+        ) : activeInfoBox === 'suggested-products' ? (
+          <Products productType={'suggested-products'} />
+        ) : activeInfoBox === 'cart' ? (
+          <CartPage products={products} />
+        ) : (
+          ''
+        )}
+      </div>
+      <AssistantPerson />
     </>
-
   )
 }

@@ -1,22 +1,19 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-//import { selectActiveInfoBox } from './store/activeInfoBoxSlice'
 import { selectProducts } from './store/cartSlice'
 
 import Header from './components/header'
 import HomePage from './pages/home'
 import FAQPage from './pages/faq'
 import CartPage from './pages/cartpage'
-//import AssistantPerson from './components/assistant-person'
 import RequestOrder from './pages/requestOrder'
 import Thankyou from './pages/thankyou'
 import TermsPage from './pages/terms'
 
 function App() {
   const products = useSelector(selectProducts)
-  //const activeInfoBox = useSelector(selectActiveInfoBox)
 
   return (
     <div
