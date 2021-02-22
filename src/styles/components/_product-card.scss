@@ -10,12 +10,15 @@
   .product-image {
     background: #19c3ff;
     border-radius: 40px;
-    padding: 25px 30px 20px;
+    padding: 15px;
 
     img,
     svg {
       width: 100%;
       height: auto;
+      display: block;
+      margin-bottom: 0;
+      border-radius: 30px;
     }
   }
 
