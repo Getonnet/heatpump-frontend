@@ -1,15 +1,15 @@
 .brand-select {
   position: relative;
+  padding: 20px 0 0 20px;
+
   .container {
     max-width: 1650px;
   }
 }
 
 .brand-select-menu {
-  //background-color: #fff;
-  //border-radius: 50%;
-  height: 550px;
-  width: 550px;
+  height: 450px;
+  width: 450px;
   position: relative;
   border: 1px dashed rgba(25, 195, 255, 0.2);
   box-sizing: border-box;
@@ -20,8 +20,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     background: #f1fbff;
     border: 1px dashed rgba(25, 195, 255, 0.3);
     box-sizing: border-box;
@@ -47,13 +47,9 @@
   border-radius: 125px;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(32, 14, 50, 0.04);
-  //transform: rotate(0deg);
-  //transition: all 0.5s ease-in-out;
-  //transform-origin: center !important;
 
   &:hover {
     box-shadow: 0 14px 60px rgba(32, 14, 50, 0.04);
-    //transform: rotate(160deg) !important;
   }
 
   &.disabled {
@@ -68,30 +64,26 @@
     transform: translateX(-50%);
   }
   &:nth-child(2) {
-    top: 15%;
+    top: 50%;
     right: -40px;
-    //right: 0;
-    //transform: translateX(-50%);
+    transform: translateY(-50%);
   }
   &:nth-child(3) {
-    top: 55%;
-    right: -40px;
-    //transform: translate3d(300px, 100px, 0);
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   &:nth-child(4) {
-    bottom: -40px;
-    right: 50%;
-    transform: translateX(50%);
-    //transform: translate3d(300px, 100px, 0);
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
   }
-  &:nth-child(5) {
-    left: 0%;
-    bottom: 15%;
-    //transform: translate3d(300px, 100px, 0);
-  }
-  &:nth-child(6) {
-    left: -20px;
-    top: 15%;
-    //transform: translate3d(300px, 100px, 0);
-  }
+  //&:nth-child(5) {
+  //  left: 0%;
+  //  bottom: 15%;
+  //}
+  //&:nth-child(6) {
+  //  left: -20px;
+  //  top: 15%;
+  //}
 }

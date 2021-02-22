@@ -1,10 +1,8 @@
 .assistant-person {
   position: absolute;
   bottom: 0;
-  //left: 500px;
   left: 52%;
   transform: translateX(-50%);
-  //max-width: 600px;
   z-index: -1;
 }
 
@@ -18,12 +16,13 @@
     display: none;
     &.is-visible {
       display: block;
-    }
-  }
-
-  @media (max-width: 1350px) {
-    .is-visible {
       width: 110%;
     }
   }
+
+  //@media (max-width: 1350px) {
+  //  .is-visible {
+  //    width: 110%;
+  //  }
+  //}
 }
