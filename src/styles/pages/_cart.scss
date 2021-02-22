@@ -23,7 +23,7 @@
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 350px;
+    max-height: 580px;
   }
 
   //scrollbar styles
@@ -71,9 +71,9 @@
 
   tbody {
     .product-image {
-      max-width: 200px;
-      width: 166px;
-      padding: 20px;
+      max-width: 100px;
+      width: 100px;
+      padding: 10px;
       height: auto;
       border-radius: 20px;
       background-color: rgba(#19c3ff, 0.1);
@@ -82,6 +82,9 @@
       img {
         width: 100%;
         height: auto;
+        border-radius: 20px;
+        display: block;
+        margin-bottom: 0;
       }
     }
 
@@ -96,10 +99,11 @@
 
     .price {
       width: 80px;
+      margin: 0 auto;
     }
 
     td {
-      padding: 20px;
+      padding: 14px 20px;
       border-right: 1px solid rgba(#19c3ff, 0.2);
       border-bottom: 1px solid rgba(#19c3ff, 0.2) !important;
 

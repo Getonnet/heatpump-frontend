@@ -10,7 +10,7 @@ export default function TermsPage() {
   return (
     <div className='terms-wrap'>
       <div className='terms-page'>
-        <div className='container'>
+        <div className='container' style={{ paddingBottom: '80px' }}>
           <div className='go-back'>
             <Link to={'/'} className='btn'>
               <LeftArrowIcon />
