@@ -50,7 +50,8 @@ export default function GDPRNotice(props) {
             top: 0,
             bottom: 0,
             zIndex: 10000,
-          }}></div>
+          }}
+        />
       </div>
     </OptionsAndInfoBox>
   )

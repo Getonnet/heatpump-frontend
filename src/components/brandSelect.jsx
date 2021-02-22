@@ -35,9 +35,9 @@ export default function BrandsSelect() {
               />
             </div>
 
-            <div className='brand-logo disabled'>
-              <img src={GreeLogo} alt='gree-logo' />
-            </div>
+            {/*<div className='brand-logo disabled'>*/}
+            {/*  <img src={GreeLogo} alt='gree-logo' />*/}
+            {/*</div>*/}
 
             <div className='brand-logo disabled'>
               <img src={NovapLogo} alt='novap-logo' />
@@ -51,9 +51,9 @@ export default function BrandsSelect() {
               />
             </div>
 
-            <div className='brand-logo disabled'>
-              <img src={GreeLogo} alt='gree-logo' />
-            </div>
+            {/*<div className='brand-logo disabled'>*/}
+            {/*  <img src={GreeLogo} alt='gree-logo' />*/}
+            {/*</div>*/}
 
             <div className='brand-logo disabled'>
               <img src={NovapLogo} alt='novap-logo' />
